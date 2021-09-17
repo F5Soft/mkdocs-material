@@ -57,8 +57,9 @@
         <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 
-      <!-- Favicon -->
+      <!-- Favicon and apple touch icon -->
       <link rel="icon" href="{{ config.theme.favicon | url }}" />
+      <link rel="apple-touch-icon" sizes="256x256" href="{{ config.theme.apple_touch_icon | url }}">
 
       <!-- Generator banner -->
       <meta
@@ -103,6 +104,10 @@
 
     <!-- JavaScript libraries -->
     {% block libs %}{% endblock %}
+
+    {% if page and page.meta and page.meta.math %}
+      <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    {% endif %}
 
     <!-- Webfonts -->
     {% block fonts %}
@@ -399,6 +404,26 @@
     <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
+
+      <!-- MathJax -->
+      {% if page and page.meta and page.meta.math %}
+      <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          enableMenu: false,
+          ignoreHtmlClass: ".*|",
+          processHtmlClass: "arithmatex"
+        }
+      };
+      </script>
+      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      {% endif %}
 
       <!-- Custom JavaScript -->
       {% for path in config["extra_javascript"] %}
