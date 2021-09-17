@@ -103,9 +103,9 @@ export function watchPalette(
     )
 
   /* Persist preference in local storage */
-  palette$.subscribe(palette => {
-    localStorage.setItem(__prefix("__palette"), JSON.stringify(palette))
-  })
+  // palette$.subscribe(palette => {
+  //   localStorage.setItem(__prefix("__palette"), JSON.stringify(palette))
+  // })
 
   /* Return palette */
   return palette$

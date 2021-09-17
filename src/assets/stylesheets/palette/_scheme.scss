@@ -27,6 +27,51 @@
 // Only use dark mode on screens
 @media screen {
 
+  // light blue scheme by F5
+  [data-md-color-scheme="light"] {
+    --md-primary-fg-color: #5887ce;
+    --md-primary-fg-color--light: #89b0eb;
+    --md-primary-fg-color--dark: #4f76b1;
+    --md-accent-fg-color: #4f76b1;
+    --md-accent-fg-color--transparent: #89b0eb;
+    --md-default-bg-color: #fafbfd;
+    --md-code-bg-color: #f0f1f3;
+  }
+
+  // dark blue scheme by F5
+  [data-md-color-scheme="dark"] {
+    --md-primary-fg-color: #456596;
+    --md-primary-fg-color--light: #89b0eb;
+    --md-primary-fg-color--dark: #456596;
+    --md-accent-fg-color: #5887ce;
+    --md-accent-fg-color--transparent: #89b0eb;
+    --md-default-fg-color: #e9effc;
+    --md-default-fg-color--light: #d2dff99e;
+    --md-default-fg-color--lighter: #d2dff952;
+    --md-default-fg-color--lightest: #d2dff91f;
+    --md-default-bg-color: #2e333e;
+    --md-default-bg-color--light: #2e333e8a;
+    --md-default-bg-color--lighter: #2e333e42;
+    --md-default-bg-color--lightest: #2e333e12;
+    --md-code-fg-color: #d5d9e2;
+    --md-code-bg-color: #21242c;
+    --md-code-hl-color: #90caf926;
+    --md-code-hl-number-color: #e6695b;
+    --md-code-hl-special-color: #f06090;
+    --md-code-hl-function-color: #c973d9;
+    --md-code-hl-constant-color: #9383e2;
+    --md-code-hl-keyword-color: #6791e0;
+    --md-code-hl-string-color: #2fb170;
+    --md-typeset-a-color: #89b0eb;
+    --md-typeset-mark-color: #90caf94d;
+    --md-typeset-kbd-color: #edeff21f;
+    --md-typeset-kbd-accent-color: #edeff233;
+    --md-typeset-kbd-border-color: #1e2229;
+    --md-admonition-bg-color: #ffffff06;
+    --md-footer-bg-color: #1a1d23de;
+    --md-footer-bg-color--dark: #16181d;
+  }
+
   // Slate theme, i.e. dark mode
   [data-md-color-scheme="slate"] {
 

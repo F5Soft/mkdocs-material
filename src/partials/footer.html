@@ -91,13 +91,12 @@
             {{ config.copyright }}
           </div>
         {% endif %}
-        Made with
-        <a
-          href="https://squidfunk.github.io/mkdocs-material/"
-          target="_blank" rel="noopener"
-        >
-          Material for MkDocs
-        </a>
+
+        <!-- Beian number for China website -->
+        {% if config.extra.beian %}
+          <a href="https://beian.miit.gov.cn/" style="color: inherit" target="_blank" rel="noopener">{{ config.extra.beian }}</a>
+        {% endif %}
+        
         {{ extracopyright }}
       </div>
 
