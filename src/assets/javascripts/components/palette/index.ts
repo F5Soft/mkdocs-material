@@ -75,7 +75,8 @@ export interface Palette {
 export function watchPalette(
   inputs: HTMLInputElement[]
 ): Observable<Palette> {
-  const current = {
+  const data = sessionStorage.getItem(__prefix("__palette"))!
+  const current = JSON.parse(data) || {
     index: inputs.findIndex(input => (
       matchMedia(input.getAttribute("data-md-color-media")!).matches
     ))
@@ -102,9 +103,9 @@ export function watchPalette(
     )
 
   /* Persist preference in local storage */
-  // palette$.subscribe(palette => {
-  //   localStorage.setItem(__prefix("__palette"), JSON.stringify(palette))
-  // })
+  palette$.subscribe(palette => {
+    sessionStorage.setItem(__prefix("__palette"), JSON.stringify(palette))
+  })
 
   /* Return palette */
   return palette$
