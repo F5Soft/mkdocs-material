@@ -75,8 +75,7 @@ export interface Palette {
 export function watchPalette(
   inputs: HTMLInputElement[]
 ): Observable<Palette> {
-  const data = localStorage.getItem(__prefix("__palette"))!
-  const current = JSON.parse(data) || {
+  const current = {
     index: inputs.findIndex(input => (
       matchMedia(input.getAttribute("data-md-color-media")!).matches
     ))
