@@ -409,6 +409,7 @@
       {% if page and page.meta and page.meta.math %}
       <script>
       window.MathJax = {
+        loader: {load: ["input/tex", "output/chtml"]},
         tex: {
           inlineMath: [["\\(", "\\)"]],
           displayMath: [["\\[", "\\]"]],
