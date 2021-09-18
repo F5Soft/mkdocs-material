@@ -61,11 +61,11 @@
       <link rel="icon" href="{{ config.theme.favicon | url }}" />
       <link rel="apple-touch-icon" sizes="256x256" href="{{ config.theme.apple_touch_icon | url }}">
 
-      <!-- Generator banner -->
-      <meta
+      <!-- Remove generator banner -->
+      <!-- <meta
         name="generator"
         content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$"
-      />
+      /> -->
     {% endblock %}
 
     <!-- Site title -->
@@ -216,8 +216,8 @@
       {% endif %}
     </div>
 
-    <!-- Announcement bar -->
-    <div data-md-component="announce">
+    <!-- Disable announcement bar -->
+    <!-- <div data-md-component="announce">
       {% if self.announce() %}
         <aside class="md-banner md-announce">
           <div class="md-banner__inner md-announce__inner md-grid md-typeset">
@@ -225,7 +225,7 @@
           </div>
         </aside>
       {% endif %}
-    </div>
+    </div> -->
 
     <!-- Header -->
     {% block header %}
