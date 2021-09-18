@@ -22,7 +22,7 @@
 
 <!-- User preference: color palette -->
 <script>
-  var palette = __get("__palette")
+  var palette = JSON.parse(sessionStorage.getItem("__palette"))
   if (palette !== null && typeof palette.color === "object")
     for (var key in palette.color)
       document.body.setAttribute("data-md-color-" + key, palette.color[key])

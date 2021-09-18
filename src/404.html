@@ -27,25 +27,22 @@
 
 <!-- Content -->
 {% block content %}
-  {% if config.extra.err_404_title %}
-  <h1>{{ config.extra.err_404_title }}</h1>
-  {% else %}
-  <h1>404 - Not found</h1>
-  {% endif %}
-  {% if config.extra.err_404_msg %}
-  <a href="{{ config.site_url }}">Back to Homepage</a>
-  <hr>
-  <p>
-      <small>{{ config.extra.err_404_msg }}</small>
-  </p>
-  {% endif %}
-  {% if config.extra.err_404_extra %}
-  <blockquote>
+  {% if config.extra.err_404 %}
+    <h1>{{ config.extra.err_404.title }}</h1>
+    <a href="{{ config.site_url }}">{{ config.extra.err_404.back }}</a>
+    <hr>
     <p>
-      {{ config.extra.err_404_extra }}
+      <small>{{ config.extra.err_404.msg }}</small>
     </p>
-  </blockquote>
+    <blockquote>
+      <p>
+        {{ config.extra.err_404.extra }}
+      </p>
+    </blockquote>
+  {% else %}
+    <h1>404 - Not found</h1>
   {% endif %}
+
 {% endblock %}
 
 <!-- Disqus integration -->
