@@ -1,5 +1,6 @@
 <!--
   Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2021 F5Soft <i@f5soft.site>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -31,14 +32,8 @@
 {% block extrahead %}
   {{ super() }}
 
-  <!-- Additional styles for landing page -->
+  <!-- Additional styles for about page -->
   <style>
-
-    /* Make landing page full-screen */
-    html {
-      height: 100%;
-      overflow: hidden;
-    }
 
     /* Landing page background */
     body[data-md-color-scheme="light"] {
@@ -60,47 +55,39 @@
       position: initial;
     }
 
-    /* Remove spacing, as we cannot hide it completely */
-    .md-main__inner {
-      margin: 0;
-    }
-
-    /* Hide main content for now */
-    .md-content {
-      display: none;
-    }
-
     /* Bring tabs in front of the star background */
     .md-tabs {
       z-index: 1;
     }
 
-    /* Bring footer in front of the star background */
-    .md-footer-meta {
+    .md-content {
+      color: var(--md-primary-bg-color);
+      text-align: center;
+      margin-bottom: 12px;
       z-index: 1;
     }
 
-    /* Animation of cursor in hero image */
-    #cursor {
-      animation: blink 1s linear infinite;
+    .md-content a {
+      color: var(--md-primary-bg-color);
+      font-weight: 700;
     }
 
-    @keyframes blink {
-      40% {
-        opacity: 1;
-      }
+    h1 {
+      font-weight: 700 !important;
+    }
 
-      45%{
-        opacity: 0;
-      }
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--md-primary-fg-color--light) !important;
+    }
 
-      55% {
-        opacity: 0;
-      }
+    /* Hide headerlink */
+    .headerlink {
+      display: none !important;
+    }
 
-      60% {
-        opacity: 1;
-      }
+    /* Bring footer in front of the star background */
+    .md-footer-meta {
+      z-index: 1;
     }
 
     /* Animation of background stars */
@@ -183,46 +170,8 @@
   </style>
 {% endblock %}
 
-
-<!-- Render hero under tabs -->
-{% block tabs %}
-  {{ super() }}
-  <!-- Hero for landing page -->
-  <section class="mdx-container">
-    <div class="md-grid md-typeset">
-      <div class="mdx-hero">
-
-        <!-- Hero image -->
-        <div class="mdx-hero__image">
-          <svg id="avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-            <path
-              d="M257.981 272.971 63.638 467.314c-9.373 9.373-24.569 9.373-33.941 0L7.029 444.647c-9.357-9.357-9.375-24.522-.04-33.901L161.011 256 6.99 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L257.981 239.03c9.373 9.372 9.373 24.568 0 33.941z">
-            </path>
-            <path id="cursor"
-              d="M640 456v-32c0-13.255-10.745-24-24-24H312c-13.255 0-24 10.745-24 24v32c0 13.255 10.745 24 24 24h304c13.255 0 24-10.745 24-24z">
-            </path>
-          </svg>
-        </div>
-
-        <!-- Hero content -->
-        <div class="mdx-hero__content">
-          <h1>{{ config.site_name }}</h1>
-          {% if config.extra.home_nav %}
-            <a href="{{ config.extra.home_nav[0].link | url }}" class="md-button md-button--primary">
-              {{ config.extra.home_nav[0].name }}
-            </a>
-            <a href="{{ config.extra.home_nav[1].link | url }}" class="md-button md-button--primary">
-              {{ config.extra.home_nav[1].name }}
-            </a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </section>
-{% endblock %}
-
-<!-- Content -->
-{% block content %}{% endblock %}
+<!-- Hide side nav -->
+{% block site_nav %}{% endblock %}
 
 <!-- Application footer -->
 {% block footer %}
