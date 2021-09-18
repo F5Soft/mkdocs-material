@@ -22,9 +22,30 @@
 
 {% extends "main.html" %}
 
+<!-- Disable site nav -->
+{% block site_nav %}{% endblock %}
+
 <!-- Content -->
 {% block content %}
+  {% if config.extra.err_404_title %}
+  <h1>{{ config.extra.err_404_title }}</h1>
+  {% else %}
   <h1>404 - Not found</h1>
+  {% endif %}
+  {% if config.extra.err_404_msg %}
+  <a href="{{ config.site_url }}">Back to Homepage</a>
+  <hr>
+  <p>
+      <small>{{ config.extra.err_404_msg }}</small>
+  </p>
+  {% endif %}
+  {% if config.extra.err_404_extra %}
+  <blockquote>
+    <p>
+      {{ config.extra.err_404_extra }}
+    </p>
+  </blockquote>
+  {% endif %}
 {% endblock %}
 
 <!-- Disqus integration -->
