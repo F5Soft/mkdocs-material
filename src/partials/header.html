@@ -113,13 +113,23 @@
             <ul class="md-select__list">
               {% for alt in config.extra.alternate %}
                 <li class="md-select__item">
-                  <a
+                  {% if page and page.canonical_url %}
+                    <a
+                      href="{{ page.canonical_url.replace(config.site_url, alt.link) | url }}"
+                      hreflang="{{ alt.lang }}"
+                      class="md-select__link"
+                    >
+                      {{ alt.name }}
+                    </a>
+                  {% else %}
+                    <a
                     href="{{ alt.link | url }}"
                     hreflang="{{ alt.lang }}"
                     class="md-select__link"
-                  >
-                    {{ alt.name }}
-                  </a>
+                    >
+                      {{ alt.name }}
+                    </a>
+                  {% endif %}
                 </li>
                 {% endfor %}
             </ul>
