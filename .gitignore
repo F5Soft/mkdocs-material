@@ -32,6 +32,8 @@
 /build
 /MANIFEST
 /site
+/material
+test.sh
 
 # Distribution files
 /dist
