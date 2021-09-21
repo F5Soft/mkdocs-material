@@ -94,9 +94,9 @@ export function watchPalette(
       map(input => ({
         index: inputs.indexOf(input),
         color: {
-          scheme:  input.getAttribute("data-md-color-scheme"),
+          scheme: input.getAttribute("data-md-color-scheme"),
           primary: input.getAttribute("data-md-color-primary"),
-          accent:  input.getAttribute("data-md-color-accent")
+          accent: input.getAttribute("data-md-color-accent")
         }
       } as Palette)),
       shareReplay(1)
@@ -128,7 +128,9 @@ export function mountPalette(
     for (const [key, value] of Object.entries(palette.color))
       if (typeof value === "string")
         document.body.setAttribute(`data-md-color-${key}`, value)
-
+    document.querySelector("meta[name=theme-color]")?.setAttribute("content",
+      getComputedStyle(document.body).getPropertyValue('--md-primary-fg-color'))
+  
     /* Toggle visibility */
     for (let index = 0; index < inputs.length; index++) {
       const label = inputs[index].nextElementSibling

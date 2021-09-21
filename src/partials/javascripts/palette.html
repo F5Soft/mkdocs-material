@@ -28,6 +28,6 @@
       document.body.setAttribute("data-md-color-" + key, palette.color[key])
 
   window.matchMedia("(prefers-color-scheme: dark)").addListener(
-    e => e.matches ? document.querySelector('#__palette_2').click() : document.querySelector('#__palette_1').click()
-  );
+    e => e.matches ? document.querySelector("#__palette_2").click() : document.querySelector("#__palette_1").click()
+  )
 </script>
