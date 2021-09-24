@@ -129,7 +129,7 @@ export function mountPalette(
       if (typeof value === "string")
         document.body.setAttribute(`data-md-color-${key}`, value)
     document.querySelector("meta[name=theme-color]")?.setAttribute("content",
-      getComputedStyle(document.body).getPropertyValue('--md-primary-fg-color'))
+      getComputedStyle(document.body).getPropertyValue("--md-primary-fg-color"))
   
     /* Toggle visibility */
     for (let index = 0; index < inputs.length; index++) {

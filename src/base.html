@@ -62,7 +62,7 @@
       <link rel="apple-touch-icon" sizes="256x256" href="{{ config.theme.apple_touch_icon | url }}">
 
       <!-- Theme color for safari 15 -->
-      <meta name="theme-color" content="">
+      <meta name="theme-color">
 
       <!-- Remove generator banner -->
       <!-- <meta
@@ -319,6 +319,12 @@
                 -->
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | d(config.site_name, true)}}</h1>
+                {% endif %}
+
+                {% if page and page.meta and page.meta.date %}
+                  <small style="opacity: 50%; margin-left: 0.15em;">
+                    {{ page.meta.date }}
+                  </small>
                 {% endif %}
 
                 <!-- Markdown content -->
