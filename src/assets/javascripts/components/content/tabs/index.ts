@@ -20,23 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import { Repo, User } from "github-types"
-import { Observable, zip } from "rxjs"
-import { defaultIfEmpty, map } from "rxjs/operators"
+import { NEVER, Observable, Subject, fromEvent, merge } from "rxjs"
+import { finalize, map, mapTo, tap } from "rxjs/operators"
 
-import { requestJSON } from "~/browser"
+import { getElementOrThrow, getElements } from "~/browser"
 
-import { SourceFacts } from "../_"
+import { Component } from "../../_"
 
 /* ----------------------------------------------------------------------------
- * Helper types
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * GitHub release (partial)
+ * Content tabs
  */
-interface Release {
-  tag_name: string                     /* Tag name */
+export interface ContentTabs {
+  active: HTMLLabelElement             /* Active tab label */
 }
 
 /* ----------------------------------------------------------------------------
@@ -44,52 +43,48 @@ interface Release {
  * ------------------------------------------------------------------------- */
 
 /**
- * Fetch GitHub repository facts
+ * Watch content tabs
  *
- * @param user - GitHub user
- * @param repo - GitHub repository
+ * @param el - Content tabs element
  *
- * @returns Repository facts observable
+ * @returns Content tabs observable
  */
-export function fetchSourceFactsFromGitHub(
-  user: string, repo?: string
-): Observable<SourceFacts> {
-  if (typeof repo !== "undefined") {
-    const url = `https://api.github.com/repos/${user}/${repo}`
-    return zip(
-
-      /* Fetch version */
-      requestJSON<Release>(`${url}/releases/latest`)
-        .pipe(
-          map(release => ({
-            version: release.tag_name
-          })),
-          defaultIfEmpty({})
-        ),
-
-      /* Fetch stars and forks */
-      requestJSON<Repo>(url)
-        .pipe(
-          map(info => ({
-            stars: info.stargazers_count,
-            forks: info.forks_count
-          })),
-          defaultIfEmpty({})
-        )
+export function watchContentTabs(
+  el: HTMLElement
+): Observable<ContentTabs> {
+  if (!el.classList.contains(".tabbed-alternate"))
+    return NEVER
+  else
+    return merge(...getElements(":scope > input", el)
+      .map(input => fromEvent(input, "change").pipe(mapTo(input.id)))
     )
       .pipe(
-        map(([release, info]) => ({ ...release, ...info }))
+        map(id => ({
+          active: getElementOrThrow<HTMLLabelElement>(`label[for=${id}]`)
+        }))
       )
+}
 
-  /* User or organization */
-  } else {
-    const url = `https://api.github.com/users/${user}`
-    return requestJSON<User>(url)
-      .pipe(
-        map(info => ({
-          repositories: info.public_repos
-        })),
-        defaultIfEmpty({})
-      )
-  }
+/**
+ * Mount content tabs
+ *
+ * @param el - Content tabs element
+ *
+ * @returns Content tabs component observable
+ */
+export function mountContentTabs(
+  el: HTMLElement
+): Observable<Component<ContentTabs>> {
+  const internal$ = new Subject<ContentTabs>()
+  internal$.subscribe(({ active }) => {
+    active.scrollIntoView({ behavior: "smooth",  block: "nearest" })
+  })
+
+  /* Create and return component */
+  return watchContentTabs(el)
+    .pipe(
+      tap(state => internal$.next(state)),
+      finalize(() => internal$.complete()),
+      map(state => ({ ref: el, ...state }))
+    )
 }

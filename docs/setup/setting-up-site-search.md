@@ -111,10 +111,10 @@ The following options are supported:
           separator: '[\s\-\.]+'
     ```
 
-`prebuild_index`{ #prebuild-index }
+~~`prebuild_index`~~{ #prebuild-index }[^1]
 
-:   :octicons-milestone-24: Default: `false` · :octicons-beaker-24:
-    Experimental – MkDocs can generate a [prebuilt index][7] of all pages during
+:   :octicons-milestone-24: Default: `false` · :octicons-archive-24: Deprecated
+    – MkDocs can generate a [prebuilt index][7] of all pages during
     build time, which provides performance improvements at the cost of more
     bandwidth, as it reduces the build time of the search index:
 
@@ -123,10 +123,15 @@ The following options are supported:
       - search:
           prebuild_index: true
     ```
-    
+
     This may be beneficial for large documentation projects served with
     appropriate headers, i.e. `Content-Encoding: gzip`, but benchmarking before
     deployment is recommended.
+
+    [^1]:
+      The `prebuild_index` feature was deprecated in 7.3.0 and will be removed
+      in 8.x. Insiders removed support in 3.0.0 with the advent of the new
+      search plugin.
 
 _Material for MkDocs doesn't provide official support for the other options of
 this plugin, so they may be supported but might yield unexpected results.
@@ -238,7 +243,7 @@ For setup instructions, refer to the [official documentation][19].
 
 ## Usage
 
-### Boosting a page
+### Search boosting
 
 [:octicons-file-code-24: Source][20] ·
 :octicons-note-24: Metadata ·
@@ -259,7 +264,103 @@ search:
 ```
 
   [20]: ../insiders/index.md
-  [21]: ../../reference/meta-tags/#metadata
+  [21]: ../reference/meta-tags.md#metadata
+
+### Search exclusion
+
+[:octicons-file-code-24: Source][20] ·
+:octicons-beaker-24: Experimental ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][20]{ .mdx-insiders }
+
+#### Excluding pages
+
+Sometimes, it's necessary to exclude a page from the search index, which can be
+achieved by adding the following front matter using the [Metadata][21]
+extension:
+
+``` bash
+---
+search:
+  exclude: true
+---
+
+# Document title
+...
+```
+
+#### Excluding sections
+
+With the help of the [Attribute List][22] extension, it's possible to exclude a
+specific section of a page from search by adding the `{ data-search-exclude }`
+pragma after the Markdown heading:
+
+=== "`docs/page.md`"
+
+    ``` markdown
+    # Document title
+
+    ## Section 1
+
+    The content of this section is included
+
+    ## Section 2 { data-search-exclude }
+
+    The content of this section is excluded
+    ```
+
+=== "`search_index.json`"
+
+    ``` json
+    {
+      ...
+      "docs": [
+        {
+          "location":"page/",
+          "text":"",
+          "title":"Document title"
+        },
+        {
+          "location":"page/#section-1",
+          "text":"<p>The content of this section is included</p>",
+          "title":"Section 1"
+        }
+      ]
+    }
+    ```
+
+  [22]: ../reference/images.md#attribute-list
+
+#### Excluding blocks
+
+If even more fine-grained control is needed, content blocks can be excluded
+from search sections with a `{ data-search-exclude }` pragma, so they will not
+be included in the search index:
+
+=== "`docs/page.md`"
+
+    ``` markdown
+    # Document title
+
+    The content of this block is included
+
+    The content of this block is excluded
+    { data-search-exclude }
+    ```
+
+=== "`search_index.json`"
+
+    ``` json
+    {
+      ...
+      "docs": [
+        {
+          "location":"page/",
+          "text":"<p>The content of this block is included</p>",
+          "title":"Document title"
+        }
+      ]
+    }
+    ```
 
 ## Customization
 
@@ -273,12 +374,12 @@ your needs.
 
 ### Query transformation
 
-[:octicons-file-code-24: Source][22] ·
+[:octicons-file-code-24: Source][23] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 When a user enters a query into the search box, the query is pre-processed
 before it is submitted to the search index. Material for MkDocs will apply the
-following transformations, which can be customized by [extending the theme][23]:
+following transformations, which can be customized by [extending the theme][24]:
 
 ``` ts
 export function defaultTransform(query: string): string {
@@ -311,7 +412,7 @@ export function defaultTransform(query: string): string {
 If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
 themes, both of which don't transform the query prior to submission, or
 customize the `transform` function, you can do this by [overriding the
-`config` block][24]:
+`config` block][25]:
 
 ``` html
 {% extends "base.html" %}
@@ -331,19 +432,19 @@ customize the `transform` function, you can do this by [overriding the
 The `transform` function will receive the query string as entered by the user
 and must return the processed query string to be submitted to the search index.
 
-  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
-  [23]: ../customization.md#extending-the-theme
-  [24]: ../customization.md#overriding-blocks-recommended
+  [23]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
+  [24]: ../customization.md#extending-the-theme
+  [25]: ../customization.md#overriding-blocks-recommended
 
 ### Custom search
 
-[:octicons-file-code-24: Source][25] ·
+[:octicons-file-code-24: Source][26] ·
 :octicons-mortar-board-24: Difficulty: _challenging_
 
-Material for MkDocs implements search as part of a [web worker][26]. If you
+Material for MkDocs implements search as part of a [web worker][27]. If you
 want to switch the web worker with your own implementation, e.g. to submit
 search to an external service, you can add a custom JavaScript file to the
-`docs` directory and [override the `config` block][23]:
+`docs` directory and [override the `config` block][24]:
 
 ``` html
 {% block config %}
@@ -361,8 +462,8 @@ format using _discriminated unions_, i.e. through the `type` property of the
 message. See the following interface definitions to learn about the message
 formats:
 
-- [:octicons-file-code-24: `SearchMessage`][27]
-- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][28]
+- [:octicons-file-code-24: `SearchMessage`][28]
+- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][29]
 
 The sequence and direction of messages is rather intuitive:
 
@@ -371,7 +472,7 @@ The sequence and direction of messages is rather intuitive:
 - :octicons-arrow-right-24: `SearchQueryMessage`
 - :octicons-arrow-left-24: `SearchResultMessage`
 
-  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
-  [26]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-  [27]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
-  [28]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts
+  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
+  [27]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+  [28]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
+  [29]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts
