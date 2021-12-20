@@ -233,25 +233,12 @@
     <!-- Further information -->
     <div class="md-footer-meta md-typeset">
       <div class="md-footer-meta__inner md-grid">
-
-        <!-- Copyright and theme information -->
-        <div class="md-footer-copyright">
-          {% if config.copyright %}
-            <div class="md-footer-copyright__highlight">
-              {{ config.copyright }}
-            </div>
-          {% endif %}
-
-          <!-- Beian number for China website -->
-          {% if config.extra.beian %}
-            <a href="https://beian.miit.gov.cn/" style="color: inherit" target="_blank" rel="noopener">{{ config.extra.beian }}</a>
-          {% endif %}
-          
-          {{ extracopyright }}
-        </div>
+        {% include "partials/copyright.html" %}
 
         <!-- Social links -->
-        {% include "partials/social.html" %}
+        {% if config.extra.social %}
+          {% include "partials/social.html" %}
+        {% endif %}
       </div>
     </div>
   </footer>
