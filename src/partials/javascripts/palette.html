@@ -22,11 +22,10 @@
 
 <!-- User preference: color palette -->
 <script>
-  var palette = JSON.parse(sessionStorage.getItem("__palette"))
-  if (palette !== null && typeof palette.color === "object")
-    for (var key in palette.color)
-      document.body.setAttribute("data-md-color-" + key, palette.color[key])
-
+  var palette = __md_get("__palette")
+  if (palette && typeof palette.color === "object")
+    for (var [key, value] of Object.entries(palette.color))
+      document.body.setAttribute("data-md-color-" + key, value)
   window.matchMedia("(prefers-color-scheme: dark)").addListener(
     e => e.matches ? document.querySelector("#__palette_2").click() : document.querySelector("#__palette_1").click()
   )

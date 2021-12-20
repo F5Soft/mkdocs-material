@@ -6,6 +6,95 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.3 <small>_ December 19, 2021</small> { id="8.1.3" }
+
+- Added animation to active content tab indicator
+- Fixed #3360: Highlighted lines add blank lines in copied text
+- Fixed usage of subsequent index files when using section index pages
+
+### 8.1.2 <small>_ December 15, 2021</small> { id="8.1.2" }
+
+- Switched CSS sources to logical properties
+- Added transformation of logical properties to `ltr`/`rtl` equivalents
+- Fixed spacing for admonitions inside lists (8.1.1 regression)
+
+### 8.1.1 <small>_ December 13, 2021</small> { id="8.1.1" }
+
+- Added support for `#only-light` and `#only-dark` image hash fragments
+- Fixed copy-to-clipboard adding blank lines when using line anchors
+- Fixed code annotation directionality for right-to-left languages
+- Fixed header title positioning for right-to-left languages
+- Fixed admonition borders for right-to-left languages (8.0.0 regression)
+- Fixed footer navigation link positioning (8.0.0 regression)
+- Fixed footer navigation title breaking out of container when too long
+- Fixed shrinking arrow in navigation title when too long
+- Fixed #3343: Filtered stopwords appear as missing search terms
+- Fixed #3346: Site unusable due to usage of `:not()` (Firefox 78 ESR)
+
+### 8.1.0 <small>_ December 10, 2021</small> { id="8.1.0" }
+
+- Added basic support for code block line anchors
+- Switched code annotation markers to `+` signs to improve usability
+- Switched main site title to bold font
+- Improved admonition icon positioning to align when `font-size` is increased
+- Improved and simplified footnotes CSS
+- Improved and simplified code annotation positioning
+- Fixed syntax error in Russian translations
+
+### 8.0.5 <small>_ December 6, 2021</small> { id="8.0.5" }
+
+- Fixed #3302: Footer refactoring induced ellipsis in some browsers
+- Fixed #3313: Details always rendered closed on load (8.0.4 regression)
+
+### 8.0.4 <small>_ December 4, 2021</small> { id="8.0.4" }
+
+- Improved support for deeply nested code annotations
+- Improved code annotation and copy-to-clipboard interop
+- Improved styling for code annotations inside admonitions
+- Fixed #3274: Invalid anchor positioning when using instant loading
+- Fixed #3294: Lists after code blocks without code annotations disappearing
+- Fixed several positioning issues for code annotations
+- Fixed JavaScript source map roots
+
+### 8.0.3 <small>_ December 2, 2021</small> { id="8.0.3" }
+
+- Removed deprecated `google_analytics` setting (was forgotten in 8.0.0)
+- Fixed syntax error in Swedish and Polish translations
+- Fixed #3283: Invalid back-to-top button position with sticky navigation tabs
+- Fixed #3285: Default details marker showing due to Safari bug
+
+### 8.0.2 <small>_ November 30, 2021</small> { id="8.0.2" }
+
+- Fixed #3275: Code annotations always disappear on click
+
+### 8.0.1 <small>_ November 28, 2021</small> { id="8.0.1" }
+
+- Improved rendering of code annotation markers
+- Fixed #3265: Wrong margin on nested admonitions
+- Fixed wrong `box-sizing` for code annotations in details
+
+### 8.0.0 <small>_ November 28, 2021</small> { id="8.0.0" }
+
+- Added support for code annotations
+- Added support for anchor tracking
+- Added support for version warning
+- Added `copyright` partial for easier override
+- Removed deprecated content tabs legacy implementation
+- Removed deprecated `seealso` admonition type
+- Removed deprecated `site_keywords` setting (unsupported by MkDocs)
+- Removed deprecated prebuilt search index support
+- Removed deprecated web app manifest – use customization
+- Removed `extracopyright` variable – use new `copyright` partial
+- Removed Disqus integation – use customization
+- Switched to `:is()` selectors for simple selector lists
+- Switched autoprefixer from `last 4 years` to `last 2 years`
+- Improved CSS overall to match modern standards
+- Improved CSS variable semantics for fonts
+- Improved extensibility by restructuring partials
+- Improved handling of `details` when printing
+- Improved keyboard navigation for footnotes
+- Fixed #3214: Search highlighting breaks site when empty
+
 ### 7.3.6 <small>_ October 30, 2021</small> { id="7.3.6" }
 
 - Added support for adding titles to code blocks
@@ -39,7 +128,7 @@ template: overrides/main.html
 - Deprecated prebuilding of search index
 - Improved graceful handling of broken search for `file://`
 - Added minimum Jinja version to list of requirements
-- Fixed #3071: section index pages render empty directories
+- Fixed #3071: Section index pages render empty directories
 - Fixed margin issues when using navigation tabs (7.3.1 regression)
 - Fixed search placeholder sometimes being shown too early
 

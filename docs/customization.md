@@ -12,7 +12,7 @@ necessary to preserve your brand's style.
 ## Adding assets
 
 [MkDocs] provides several ways to customize a theme. In order to make a few
-small tweaks to Material for MkDocs, you can just CSS and JavaScript files to
+small tweaks to Material for MkDocs, you can just add CSS and JavaScript files to
 the `docs` directory.
 
   [MkDocs]: https://www.mkdocs.org
@@ -20,8 +20,8 @@ the `docs` directory.
 ### Additional CSS
 
 If you want to tweak some colors or change the spacing of certain elements,
-you can do this in a separate stylesheet. The easiest way is by creating a
-new stylesheet file in the `docs` directory:
+you can do this in a separate style sheet. The easiest way is by creating a
+new style sheet file in the `docs` directory:
 
 ``` sh
 .
@@ -97,13 +97,14 @@ assets may also be put in the `overrides` directory:
 ├─ assets/
 │  ├─ images/                          # Images and icons
 │  ├─ javascripts/                     # JavaScript files
-│  └─ stylesheets/                     # Stylesheets
+│  └─ stylesheets/                     # Style sheets
 ├─ partials/
 │  ├─ integrations/                    # Third-party integrations
 │  │  ├─ analytics/                    # Analytics integrations
-│  │  ├─ analytics.html                # Analytics setup
-│  │  └─ disqus.html                   # Disqus
+│  │  └─ analytics.html                # Analytics setup
 │  ├─ languages/                       # Translation languages
+│  ├─ content.html                     # Page content
+│  ├─ copyright.html                   # Copyright and theme information
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
 │  ├─ language.html                    # Translation setup
@@ -111,7 +112,7 @@ assets may also be put in the `overrides` directory:
 │  ├─ nav.html                         # Main navigation
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ palette.html                     # Color palette
-│  ├─ search.html                      # Search box
+│  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
 │  ├─ source-file.html                 # Source file information
@@ -172,7 +173,7 @@ Then, e.g. to override the site title, add the following lines to `main.html`:
 The following template blocks are provided by the theme:
 
 | Block name        | Purpose                                         |
-|:------------------|:------------------------------------------------|
+| :---------------- | :---------------------------------------------- |
 | `analytics`       | Wraps the Google Analytics integration          |
 | `announce`        | Wraps the announcement bar                      |
 | `config`          | Wraps the JavaScript application config         |
@@ -191,28 +192,6 @@ The following template blocks are provided by the theme:
 | `site_nav`        | Wraps the site navigation and table of contents |
 | `styles`          | Wraps the style sheets (also extra sources)     |
 | `tabs`            | Wraps the tabs navigation (if available)        |
-
-#### Additional variables
-
-Besides template blocks, Material for MkDocs provides extra variables for parts
-that cannot be overridden with template blocks (due to technical limitations of
-the template engine). If you want to add further information after the _Made
-with Material for MkDocs_ hint in the footer, add the following line to
-`main.html`:
-
-``` html
-{% extends "base.html" %}
-
-{% set extracopyright %}
-  <!-- Add additional copyright information here -->
-{% endset %}
-```
-
-The following template variables are provided by the theme:
-
-| Block name        | Purpose                                         |
-|:------------------|:------------------------------------------------|
-| `extracopyright`  | Adds custom copyright information               |
 
 ## Theme development
 

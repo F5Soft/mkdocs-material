@@ -26,10 +26,10 @@ contents:
 === "Material for MkDocs"
 
     ``` yaml
-    name: ci # (1)
+    name: ci # (1)!
     on:
       push:
-        branches: # (2)
+        branches: # (2)!
           - master
           - main
     jobs:
@@ -40,7 +40,7 @@ contents:
           - uses: actions/setup-python@v2
             with:
               python-version: 3.x
-          - run: pip install mkdocs-material # (3)
+          - run: pip install mkdocs-material # (3)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -80,7 +80,7 @@ contents:
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (1)
+      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (1)!
     ```
 
     1.  Remember to set the `GH_TOKEN` environment variable to the value of your
@@ -91,9 +91,9 @@ Now, when a new commit is pushed to either the `master` or `main` branches,
 the static site is automatically built and deployed. Push your changes to see
 the workflow in action.
 
-If the GitHub Page doesn't show up after a few minutes, ensure the source branch
-for your GitHub Page is set to `gh-pages` in your repository settings 
-`github.com/<username>/<repository>/settings/pages`.
+If the GitHub Page doesn't show up after a few minutes, go to your
+settings of your repository and ensure that the [publishing source branch]
+for your GitHub Page is set to `gh-pages`.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 
@@ -102,6 +102,7 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [personal access token]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
   [Insiders]: insiders/index.md
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+  [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 ### with MkDocs
 
@@ -143,7 +144,7 @@ contents:
       stage: deploy
       only:
         - master
-      script: # (1)
+      script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
       artifacts:

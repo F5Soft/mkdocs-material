@@ -57,7 +57,7 @@ The following configuration options are available:
 
 `cards`{ #cards }
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether 
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
     for local builds, you can use an [environment variable]:
 
@@ -70,20 +70,33 @@ The following configuration options are available:
 `cards_color`{ #cards-color }
 
 :   [:octicons-tag-24: insiders-2.13.0][Insiders] · :octicons-milestone-24:
-    Default: [primary color][palette.primary] – This option specifies which
-    colors to use for the background `fill` and foreground `text` when
-    generating the social card:
+    Default: [`theme.palette.primary`][palette.primary] – This option specifies
+    the colors for the background `fill` and foreground `text` when generating
+    the social card:
 
     ``` yaml
     plugins:
       - social:
           cards_color:
-            fill: "#0FF1CE" # (1)
+            fill: "#0FF1CE" # (1)!
             text: "#FFFFFF"
     ```
 
     1.  Colors can either be defined as HEX colors, or as [CSS color keywords].
         Note that HEX colors must be enclosed in quotes.
+
+`cards_font`{ #cards-font }
+
+:   [:octicons-tag-24: insiders-4.3.0][Insiders] · :octicons-milestone-24:
+    Default: [`theme.font.text`][font.text] – This option specifies which font
+    to use for rendering the social card, which can be any font hosted on
+    [Google Fonts]:
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_font: Roboto
+    ```
 
 `cards_directory`{ #cards-directory }
 
@@ -102,6 +115,7 @@ The following configuration options are available:
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
+  [Google Fonts]: https://fonts.google.com
 
 #### Dependencies
 
@@ -258,5 +272,5 @@ default values.
 - [Changing the description]
 
   [Metadata]: extensions/python-markdown.md#metadata
-  [Changing the title]: ../reference/meta-tags.md#setting-the-page-title
-  [Changing the description]: ../reference/meta-tags.md#setting-the-page-description
+  [Changing the title]: ../reference/index.md#setting-the-page-title
+  [Changing the description]: ../reference/index.md#setting-the-page-description

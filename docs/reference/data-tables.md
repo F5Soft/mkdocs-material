@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+icon: material/table-edit
 ---
 
 # Data tables
@@ -134,7 +135,7 @@ loading] via [additional JavaScript]:
 
     ``` js
     document$.subscribe(function() {
-      var tables = document.querySelectorAll("article table")
+      var tables = document.querySelectorAll("article table:not([class])")
       tables.forEach(function(table) {
         new Tablesort(table)
       })

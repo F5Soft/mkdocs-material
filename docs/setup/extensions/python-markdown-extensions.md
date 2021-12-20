@@ -227,7 +227,7 @@ in `*.svg` file format into the resulting HTML page. Enable it via `mkdocs.yml`:
 ``` yaml
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji # (1)
+      emoji_index: !!python/name:materialx.emoji.twemoji # (1)!
       emoji_generator: !!python/name:materialx.emoji.to_svg
 ```
 
@@ -308,8 +308,9 @@ The [Highlight] extension adds support for syntax highlighting of code blocks
 
 ``` yaml
 markdown_extensions:
-  - pymdownx.highlight
-  - pymdownx.superfences # (1)
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences # (1)!
 ```
 
 1.  [Highlight] is used by the [SuperFences][pymdownx.superfences] extension to
@@ -399,9 +400,9 @@ The following configuration options are supported:
 `linenums_style`{ #highlight-linenums-style }
 
 :   :octicons-milestone-24: Default: `table` – The [Highlight] extension
-    provides three ways to add line numbers, all of which are supported by
-    Material for MkDocs. While `table` wraps a code block in a table, `inline`
-    and `pymdownx-inline` render line numbers as part of the line itself:
+    provides three ways to add line numbers, two of which are supported by
+    Material for MkDocs. While `table` wraps a code block in a `<table>`
+    element, `pymdownx-inline` renders line numbers as part of the line itself:
 
     ``` yaml
     markdown_extensions:
@@ -413,6 +414,19 @@ The following configuration options are supported:
     means that they will be included when selecting text with the cursor or 
     copying a code block to the clipboard. Thus, the usage of either `table`
     or `pymdownx-inline` is recommended.
+
+`anchor_linenums`{ #anchor-linenums }
+
+:   [:octicons-tag-24: 8.1.0][anchor_linenums support] · :octicons-milestone-24:
+    Default: `false` – If a code blocks contains line numbers, enabling this
+    setting will wrap them with anchor links, so they can be hyperlinked and
+    shared more easily:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.highlight:
+          anchor_linenums: true
+    ```
 
 The other configuration options of this extension are not officially supported
 by Material for MkDocs, which is why they may yield unexpected results. Use
@@ -435,6 +449,7 @@ See reference for usage:
   [additional CSS]: ../../customization.md#additional-css
   [Highlight.js]: https://highlightjs.org/
   [title]: ../../reference/code-blocks.md#adding-a-title
+  [anchor_linenums support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.0
   [Adding line numbers]: ../../reference/code-blocks.md#adding-line-numbers
   [Using code blocks]: ../../reference/code-blocks.md#usage
   [Adding a title]: ../../reference/code-blocks.md#adding-a-title
@@ -625,10 +640,10 @@ The following configuration options are supported:
 
 `alternate_style`{ #tabbed-alternate-style }
 
-:   :octicons-milestone-24: Default: `false` · [:octicons-tag-24: 7.3.1]
-    [Tabbed alternate support] – This option enables the [alternate style] of
-    content tabs, which has [better behavior on mobile viewports], and thus
-    is strongly recommended:
+:   [:octicons-tag-24: 7.3.1][Tabbed alternate support] ·
+    :octicons-milestone-24: Default: `false` · :octicons-alert-24: Required – 
+    This option enables the content tabs [alternate style], which has
+    [better behavior on mobile viewports], and is the only supported style:
 
     ``` yaml
     markdown_extensions:

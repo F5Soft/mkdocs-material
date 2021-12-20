@@ -21,20 +21,24 @@
  */
 
 import "focus-visible"
-import { NEVER, Subject, defer, merge } from "rxjs"
 import {
+  EMPTY,
+  NEVER,
+  Subject,
+  defer,
   delay,
   filter,
   map,
+  merge,
   mergeWith,
   shareReplay,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { configuration, feature } from "./_"
 import {
   at,
-  getElement,
+  getOptionalElement,
   requestJSON,
   setToggle,
   watchDocument,
@@ -136,7 +140,7 @@ keyboard$
         /* Go to previous page */
         case "p":
         case ",":
-          const prev = getElement("[href][rel=prev]")
+          const prev = getOptionalElement("[href][rel=prev]")
           if (typeof prev !== "undefined")
             prev.click()
           break
@@ -144,7 +148,7 @@ keyboard$
         /* Go to next page */
         case "n":
         case ".":
-          const next = getElement("[href][rel=next]")
+          const next = getOptionalElement("[href][rel=next]")
           if (typeof next !== "undefined")
             next.click()
           break
@@ -194,13 +198,13 @@ const content$ = defer(() => merge(
 
   /* Content */
   ...getComponentElements("content")
-    .map(el => mountContent(el, { target$, viewport$, print$ })),
+    .map(el => mountContent(el, { target$, print$ })),
 
   /* Search highlighting */
   ...getComponentElements("content")
     .map(el => feature("search.highlight")
       ? mountSearchHiglight(el, { index$, location$ })
-      : NEVER
+      : EMPTY
     ),
 
   /* Header title */
@@ -247,8 +251,8 @@ window.location$  = location$          /* Location subject */
 window.target$    = target$            /* Location target observable */
 window.keyboard$  = keyboard$          /* Keyboard observable */
 window.viewport$  = viewport$          /* Viewport observable */
-window.tablet$    = tablet$            /* Tablet observable */
-window.screen$    = screen$            /* Screen observable */
-window.print$     = print$             /* Print mode observable */
+window.tablet$    = tablet$            /* Media tablet observable */
+window.screen$    = screen$            /* Media screen observable */
+window.print$     = print$             /* Media print observable */
 window.alert$     = alert$             /* Alert subject */
 window.component$ = component$         /* Component observable */

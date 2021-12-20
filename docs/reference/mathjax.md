@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+icon: material/alphabet-greek
 ---
 
 # MathJax
@@ -36,7 +37,7 @@ lines to `mkdocs.yml`:
       }
     };
 
-    document$.subscribe(() => { // (1)
+    document$.subscribe(() => { // (1)!
       MathJax.typesetPromise()
     })
     ```

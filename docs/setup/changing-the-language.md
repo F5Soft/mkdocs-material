@@ -101,7 +101,7 @@ can be defined via `mkdocs.yml`.
 extra:
   alternate:
     - name: English
-      link: /en/ # (1)
+      link: /en/ # (1)!
       lang: en
     - name: Deutsch
       link: /de/
@@ -184,16 +184,16 @@ the guide on [theme extension] and create a new partial in the `overrides`
 folder. Then, import the [translations] of the language as a fallback and only
 adjust the ones you want to override:
 
-=== ":octicons-file-code-16: partials/languages/custom.html"
+=== ":octicons-file-code-16: overrides/partials/languages/custom.html"
 
     ``` html
     <!-- Import translations for language and fallback -->
     {% import "partials/languages/de.html" as language %}
-    {% import "partials/languages/en.html" as fallback %} <!-- (1) -->
+    {% import "partials/languages/en.html" as fallback %} <!-- (1)! -->
 
     <!-- Define custom translations -->
     {% macro override(key) %}{{ {
-      "source.file.date.created": "Erstellt am", <!-- (2) -->
+      "source.file.date.created": "Erstellt am", <!-- (2)! -->
       "source.file.date.updated": "Aktualisiert am"
     }[key] }}{% endmacro %}
 

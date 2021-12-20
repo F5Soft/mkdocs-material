@@ -45,6 +45,7 @@ test.sh
 *.tsbuildinfo
 .cache
 .eslintcache
+__pycache__
 
 # -----------------------------------------------------------------------------
 # General
@@ -65,5 +66,4 @@ TODO
 tmp
 
 # IDEs
-.vscode
 .idea

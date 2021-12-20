@@ -17,7 +17,7 @@ that new features are first exclusively released to sponsors as part of
   </div>
   <figcaption markdown>
 
-The official documentation is built with Insiders
+This documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   </figcaption>
@@ -162,8 +162,12 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Was this page helpful?] :material-new-box:
-- [x] [Brand new search plugin] :material-new-box:
+- [x] [Navigation icons] :material-new-box:
+- [x] [Code annotations: anchor links] :material-new-box:
+- [x] [Code annotations: strip comments] :material-new-box:
+- [x] [Dismissable announcement bar]
+- [x] [Was this page helpful?]
+- [x] [Brand new search plugin]
 - [x] [Rich search previews]
 - [x] [Tokenizer with lookahead]
 - [x] [Advanced search highlighting]
@@ -172,7 +176,7 @@ The following features are solely available via Material for MkDocs Insiders:
 - [x] [Cookie consent]
 - [x] [Linking content tabs]
 - [x] [Boosting pages in search]
-- [x] [Tags] with search integration
+- [x] [Tags with search integration]
 - [x] [Stay on page when switching versions]
 - [x] [Custom admonition icons]
 - [x] [Mermaid.js integration]
@@ -193,11 +197,11 @@ are released for general availability.
 
 - [x] [Mermaid.js integration]
 - [x] [Stay on page when switching versions]
-- [x] [Tags] with search integration
+- [x] [Tags with search integration]
 
   [Mermaid.js integration]: ../reference/diagrams.md
   [Stay on page when switching versions]: ../setup/setting-up-versioning.md#stay-on-page
-  [Tags]: ../setup/setting-up-tags.md
+  [Tags with search integration]: ../setup/setting-up-tags.md
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -213,18 +217,23 @@ are released for general availability.
 
 - [x] [Cookie consent]
 - [x] [Was this page helpful?]
-- [ ] Link cards
+- [x] [Dismissable announcement bar]
 
   [Cookie consent]: ../setup/setting-up-site-analytics.md#cookie-consent
   [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
+  [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 
 #### $ 8,000 – Scotch Bonnet
 
 - [x] [Social cards]
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
 - [ ] Stay on page when switching languages
-- [ ] Table of contents follows active anchor
+- [ ] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
+  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
+  [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
 
 #### $ 10,000 – Carolina Reaper
 
@@ -239,6 +248,16 @@ are released for general availability.
   [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
   [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
+
+#### $ 12,000 – Piri Piri
+
+- [x] [Navigation icons]
+- [ ] Navigation status badges
+- [ ] Navigation pruning
+- [ ] Text annotations
+- [ ] Blog
+
+  [Navigation icons]: ../reference/index.md#setting-the-page-icon
 
 ### Goals completed
 

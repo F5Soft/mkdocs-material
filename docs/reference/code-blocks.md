@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+icon: material/code-tags
 ---
 
 # Code blocks
@@ -19,10 +20,11 @@ following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
   - pymdownx.snippets
+  - pymdownx.superfences
 ```
 
 The following sections discuss how to use different syntax highlighting features
@@ -43,7 +45,7 @@ See additional configuration options:
 
 ### Code annotations
 
-[:octicons-tag-24: 8.0.0b1][Code annotations support] ·
+[:octicons-tag-24: 8.0.0][Code annotations support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -55,7 +57,7 @@ and inline comments in the language of the code block. Add the following to
 ``` yaml
 theme:
   features:
-    - content.code.annotate # (1)
+    - content.code.annotate # (1)!
 ```
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
@@ -77,8 +79,28 @@ theme:
     Note that the language shortcode which has to come first must now also be 
     prefixed by a `.`.
 
-  [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0b1
+  [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
+
+#### Anchor links
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.4.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+In order to link to code annotations and share them more easily, [Insiders] adds
+an anchor link to each annotation automatically, which you can copy via right
+click or open in a new tab:
+
+``` yaml
+# (1)!
+```
+
+1.  If you ++cmd++ :material-plus::material-cursor-default-outline: me, I'm
+    rendered open in a new tab. You can also right-click me to __copy link
+    address__ to share me with others.
+
+  [Insiders]: ../insiders/index.md
 
 ## Usage
 
@@ -90,14 +112,14 @@ shortcode for a given language.
 _Example_:
 
 ```` markdown
-``` python
+``` py
 import tensorflow as tf
 ```
 ````
 
 _Result_:
 
-``` python
+``` py
 import tensorflow as tf
 ```
 
@@ -173,6 +195,38 @@ theme:
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
     text__, images, ... basically anything that can be expressed in Markdown.
 
+#### Stripping comments
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.4.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+If you wish to strip the comment characters surrounding a code annotation,
+[Insiders] adds a new syntax that allows for just that. Simply add an `!` after
+the closing parens of the code annotation:
+
+_Example_:
+
+```` markdown
+``` yaml
+# (1)!
+```
+
+1.  Look ma, less line noise!
+````
+
+_Result_:
+
+``` yaml
+# (1)!
+```
+
+1.  Look ma, less line noise!
+
+Note that this only allows for a single code annotation to be rendered per
+comment. If you want to add multiple code annotations, comments cannot be
+stripped for technical reasons.
+
 ### Adding line numbers
 
 Line numbers can be added to a code block by using the `linenums="<start>"`
@@ -183,7 +237,7 @@ allows to split large code blocks for readability.
 _Example_:
 
 ```` markdown
-``` python linenums="1"
+``` py linenums="1"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -194,7 +248,7 @@ def bubble_sort(items):
 
 _Result_:
 
-``` python linenums="1"
+``` py linenums="1"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -214,7 +268,7 @@ at `1`, regardless of the starting line number specified as part of
     _Example_:
 
     ```` markdown 
-    ``` python hl_lines="2 3"
+    ``` py hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -225,7 +279,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Result_:
 
-    ``` python linenums="1" hl_lines="2 3"
+    ``` py linenums="1" hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -238,7 +292,7 @@ at `1`, regardless of the starting line number specified as part of
     _Example_:
 
     ```` markdown
-    ``` python hl_lines="2-5"
+    ``` py hl_lines="2-5"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -249,7 +303,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Result_:
 
-    ``` python linenums="1" hl_lines="2-5"
+    ``` py linenums="1" hl_lines="2-5"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -367,3 +421,35 @@ override it as part of your [additional style sheet]:
   [types of string tokens]: https://pygments.org/docs/tokens/#literals
   [additional style sheet]: ../customization.md#additional-css
   [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
+
+### Annotations with numbers
+
+Prior to [:octicons-tag-24: 8.1.0][code annotation markers], code annotations
+were rendered with markers showing the original number as used by the author.
+However, for technical reasons code annotation numbers restart each code block,
+which might lead to confusion. For this reason, code annotations now render as
+`+` signs which are rotated if they're open to denote that clicking them again
+will close them.
+
+If you wish to revert to the prior behavior and display code annotation numbers,
+you can add an [additional style sheet] and copy and paste the following CSS:
+
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+
+    ``` css
+    .md-typeset .md-annotation__index > ::before {
+      content: attr(data-md-annotation-id);
+    }
+    .md-typeset :focus-within > .md-annotation__index > ::before {
+      transform: none;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/extra.css
+    ```
+
+  [code annotation markers]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.0

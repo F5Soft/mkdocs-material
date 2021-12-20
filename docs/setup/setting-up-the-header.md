@@ -53,3 +53,29 @@ block][overriding blocks], which is empty by default:
   [Announcement bar support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [extend the theme]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
+
+#### Mark as read
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.2.0][Insiders] ·
+:octicons-unlock-24: Feature flag ·
+:octicons-beaker-24: Experimental
+
+In order to render temporary announcements that can be marked as read by the
+user, a button to dismiss the current announcement can be included. Add the
+following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - announce.dismiss
+```
+
+When the user clicks the button, the current announcement is dismissed and not
+displayed again until the content of the announcement changes. This is handled
+automatically.
+
+[Scroll to the top of this page][top] to see it in action.
+
+  [Insiders]: ../insiders/index.md
+  [top]: #

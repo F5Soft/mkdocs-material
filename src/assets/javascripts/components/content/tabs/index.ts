@@ -20,10 +20,31 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, fromEvent, merge } from "rxjs"
-import { finalize, map, mapTo, tap } from "rxjs/operators"
+import {
+  Observable,
+  Subject,
+  animationFrameScheduler,
+  auditTime,
+  combineLatest,
+  defer,
+  finalize,
+  fromEvent,
+  map,
+  mapTo,
+  merge,
+  startWith,
+  takeLast,
+  takeUntil,
+  tap
+} from "rxjs"
 
-import { getElementOrThrow, getElements } from "~/browser"
+import {
+  getElement,
+  getElementOffset,
+  getElementSize,
+  getElements,
+  watchElementSize
+} from "~/browser"
 
 import { Component } from "../../_"
 
@@ -52,21 +73,28 @@ export interface ContentTabs {
 export function watchContentTabs(
   el: HTMLElement
 ): Observable<ContentTabs> {
-  if (!el.classList.contains("tabbed-alternate"))
-    return NEVER
-  else
-    return merge(...getElements(":scope > input", el)
-      .map(input => fromEvent(input, "change").pipe(mapTo(input.id)))
+  const inputs = getElements(":scope > input", el)
+  return merge(...inputs.map(input => fromEvent(input, "change")
+    .pipe(
+      mapTo<ContentTabs>({
+        active: getElement(`label[for=${input.id}]`)
+      })
     )
-      .pipe(
-        map(id => ({
-          active: getElementOrThrow<HTMLLabelElement>(`label[for=${id}]`)
-        }))
-      )
+  ))
+    .pipe(
+      startWith({
+        active: getElement(`label[for=${inputs[0].id}]`)
+      } as ContentTabs)
+    )
 }
 
 /**
  * Mount content tabs
+ *
+ * This function scrolls the active tab into view. While this functionality is
+ * provided by browsers as part of `scrollInfoView`, browsers will always also
+ * scroll the vertical axis, which we do not want. Thus, we decided to provide
+ * this functionality ourselves.
  *
  * @param el - Content tabs element
  *
@@ -75,25 +103,45 @@ export function watchContentTabs(
 export function mountContentTabs(
   el: HTMLElement
 ): Observable<Component<ContentTabs>> {
-  const internal$ = new Subject<ContentTabs>()
-  internal$.subscribe(({ active }) => {
-    // TODO: Hack, scrollIntoView is too buggy
-    const container = active.parentElement!
-    if (
-      active.offsetLeft + active.offsetWidth > container.scrollLeft + container.offsetWidth ||
-      active.offsetLeft                      < container.scrollLeft
-    )
-      container.scrollTo({
-        behavior: "smooth",
-        left: active.offsetLeft
-      })
-  })
+  const container = getElement(".tabbed-labels", el)
+  return defer(() => {
+    const push$ = new Subject<ContentTabs>()
+    combineLatest([push$, watchElementSize(el)])
+      .pipe(
+        auditTime(1, animationFrameScheduler),
+        takeUntil(push$.pipe(takeLast(1)))
+      )
+        .subscribe({
 
-  /* Create and return component */
-  return watchContentTabs(el)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+          /* Handle emission */
+          next([{ active }]) {
+            const offset = getElementOffset(active)
+            const { width } = getElementSize(active)
+
+            /* Set tab indicator offset and width */
+            el.style.setProperty("--md-indicator-x", `${offset.x}px`)
+            el.style.setProperty("--md-indicator-width", `${width}px`)
+
+            /* Smoothly scroll container */
+            container.scrollTo({
+              behavior: "smooth",
+              left: offset.x
+            })
+          },
+
+          /* Handle complete */
+          complete() {
+            el.style.removeProperty("--md-indicator-x")
+            el.style.removeProperty("--md-indicator-width")
+          }
+        })
+
+    /* Create and return component */
+    return watchContentTabs(el)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }
