@@ -40,6 +40,13 @@
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 
+<!-- Page date -->
+{% if page and page.meta and page.meta.date %}
+<small style="opacity: 50%; margin-left: 0.15em;">
+  {{ page.meta.date }}
+</small>
+{% endif %}
+
 <!-- Markdown content -->
 {{ page.content }}
 
