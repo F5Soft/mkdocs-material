@@ -85,11 +85,6 @@
     max-height   0ms 250ms,
     z-index    250ms;
 
-  // [reduced motion]: Disable animation
-  @media (prefers-reduced-motion) {
-    transition: none;
-  }
-
   // Tooltip on parent focus
   :focus-within > & {
     max-height: 1000%;
@@ -100,11 +95,6 @@
       opacity    250ms,
       max-height 250ms,
       z-index      0ms;
-
-    // [reduced motion]: Disable animation
-    @media (prefers-reduced-motion) {
-      transition: none;
-    }
   }
 
   // Show outline for keyboard devices
@@ -144,6 +134,9 @@
   // Annotation is not hidden (e.g. when copying)
   &:not([hidden]) {
     display: inline-block;
+    // Hack: ensure that the line height doesn't exceed the line height of the
+    // hosting line, because it will lead to dancing pixels.
+    line-height: 1.325;
   }
 
   // Promote children to top on focus
@@ -182,6 +175,9 @@
       top: 0.025em;
       left: -0.126em;
       z-index: -1;
+      // Hack: the first property is used as a fallback for older browsers
+      // which don't support the min/max/clamp math functions.
+      width: calc(100% + 1.2ch);
       width: max(2.2ch, 100% + 1.2ch);
       height: 2.2ch;
       margin: 0 -0.4ch;
@@ -196,7 +192,6 @@
 
       // [reduced motion]: Disable animation
       @media (prefers-reduced-motion) {
-        transition: none;
         animation: none;
       }
 
@@ -211,11 +206,6 @@
           color            250ms,
           background-color 250ms;
         animation: none;
-
-        // [reduced motion]: Disable animation
-        @media (prefers-reduced-motion) {
-          transition: none;
-        }
       }
     }
 
@@ -224,11 +214,6 @@
       display: inline-block;
       transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
       content: attr(data-md-annotation-id);
-
-      // [reduced motion]: Disable animation
-      @media (prefers-reduced-motion) {
-        transition: none;
-      }
 
       // [not print]: if we're not in print mode, show a `+` sign instead of
       // the original numbers, as context is already given by the position.

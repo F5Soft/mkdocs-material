@@ -6,6 +6,19 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.5 <small>_ January 9, 2022</small> { id="8.1.5" }
+
+- Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+
+- Improved rendering of inline code blocks in headlines
+- Added Bahasa Malaysian translations
+- Fixed #3354: MathJax formulas show vertical scrollbar
+
+### 8.1.4 <small>_ January 2, 2022</small> { id="8.1.4" }
+
+- Added indicator to navigation expander icon
+- Improved support for reduced motion preference
+- Fixed jitter of active content tab indicator
+
 ### 8.1.3 <small>_ December 19, 2021</small> { id="8.1.3" }
 
 - Added animation to active content tab indicator
