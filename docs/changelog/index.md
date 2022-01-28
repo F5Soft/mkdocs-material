@@ -6,6 +6,24 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+
+### 8.1.8 <small>_ January 23, 2022</small> { id="8.1.8" }
+
+- Added Latvian translations
+- Updated Giscus example integration with dynamic theme change support
+- Fixed #3479: Back-to-top button not hidden when using sticky navigation tabs
+- Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
+
+### 8.1.7 <small>_ January 16, 2022</small> { id="8.1.7" }
+
+- Improved back-to-top button behavior - now not shown on anchor jump
+
+### 8.1.6 <small>_ January 11, 2022</small> { id="8.1.6" }
+
+- Fixed spacing of blockquotes (8.1.5 regression)
+- Fixed edge cases for rounded corners on code blocks (8.1.5 regression)
+- Fixed issues with code annotation line heights
+
 ### 8.1.5 <small>_ January 9, 2022</small> { id="8.1.5" }
 
 - Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+

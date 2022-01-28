@@ -1,3 +1,32 @@
+mkdocs-material-8.1.8+insiders-4.7.0 (2022-01-25)
+
+  * Added native support for offline search
+
+mkdocs-material-8.1.8 (2022-01-23)
+
+  * Added Latvian translations
+  * Updated Giscus example integration with dynamic theme change support
+  * Fixed #3479: Back-to-top button not hidden when using sticky navigation tabs
+  * Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
+
+mkdocs-material-8.1.7+insiders-4.6.1 (2022-01-16)
+
+  * Fixed #3459: Section index pages picking up wrong title
+
+mkdocs-material-8.1.7 (2022-01-16)
+
+  * Improved back-to-top button behavior - now not shown on anchor jump
+
+mkdocs-material-8.1.6-insiders-4.6.0 (2022-01-11)
+
+  * Added support for annotations (outside of code blocks)
+
+mkdocs-material-8.1.6 (2022-01-11)
+
+  * Fixed spacing of blockquotes (8.1.5 regression)
+  * Fixed edge cases for rounded corners on code blocks (8.1.5 regression)
+  * Fixed rendering issues with code annotation line heights
+
 mkdocs-material-8.1.5 (2022-01-09)
 
   * Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+

@@ -162,9 +162,11 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Navigation icons] :material-new-box:
-- [x] [Code annotations: anchor links] :material-new-box:
-- [x] [Code annotations: strip comments] :material-new-box:
+- [x] [Offline search] :material-new-box:
+- [x] [Annotations] :material-new-box:
+- [x] [Navigation icons]
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
 - [x] [Dismissable announcement bar]
 - [x] [Was this page helpful?]
 - [x] [Brand new search plugin]
@@ -242,21 +244,24 @@ are released for general availability.
 - [x] [Tokenizer with lookahead]
 - [x] [Advanced search highlighting]
 - [x] [Excluding content from search]
+- [x] [Offline search]
 
   [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
   [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
   [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
   [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
+  [Offline search]: ../setup/setting-up-site-search.md#offline-search
 
 #### $ 12,000 – Piri Piri
 
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [ ] Navigation status badges
 - [ ] Navigation pruning
-- [ ] Text annotations
 - [ ] Blog
 
+  [Annotations]: ../reference/annotations.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
 
 ### Goals completed

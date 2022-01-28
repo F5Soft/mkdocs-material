@@ -6,6 +6,18 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.7.0 <small>_ January 25, 2022</small> { id="4.7.0" }
+
+- Added native support for offline search
+
+### 4.6.1 <small>_ January 16, 2022</small> { id="4.6.1" }
+
+- Fixed #3459: Section index pages picking up wrong title
+
+### 4.6.0 <small>_ January 11, 2022</small> { id="4.6.0" }
+
+- Added support for annotations (outside of code blocks)
+
 ### 4.5.2 <small>_ January 8, 2022</small> { id="4.5.2" }
 
 - Fixed #3440: Content tab indicator not moving when using linking
