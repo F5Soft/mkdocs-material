@@ -54,6 +54,20 @@
       background-color: var(--md-accent-fg-color);
       border-color: var(--md-accent-fg-color);
     }
+
+    // Disabled button
+    &--disabled {
+      color: var(--md-primary-bg-color);
+      background-color: var(--md-default-fg-color--lighter);
+      border-color: var(--md-default-fg-color--lightest);
+    }
+
+    // Disabled Button on focus/hover
+    &--disabled:is(:focus, :hover) {
+      color: var(--md-primary-bg-color);
+      background-color: var(--md-default-fg-color--lighter);
+      border-color: var(--md-default-fg-color--lightest);
+    }
   }
 
   // Form input
