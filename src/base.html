@@ -206,16 +206,18 @@
       {% endif %}
     </div>
 
-    <!-- Disable announcement bar -->
-    <!-- <div data-md-component="announce">
-      {% if self.announce() %}
+    <!-- Announcement bar -->
+    {% if config.extra.announcement %}
+      <div data-md-component="announce" style="z-index: 1;">
         <aside class="md-banner">
           <div class="md-banner__inner md-grid md-typeset">
-            {% block announce %}{% endblock %}
+            <a href="https://how-you-can-support-ukraine.super.site">
+              {{ config.extra.announcement }}
+            </a>
           </div>
         </aside>
-      {% endif %}
-    </div> -->
+      </div>
+    {% endif %}
 
     <!-- Version warning -->
     {% if config.extra.version %}
