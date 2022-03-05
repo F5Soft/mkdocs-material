@@ -56,7 +56,7 @@ See additional configuration options:
 - [Emoji with custom icons]
 
   [Material Design]: https://materialdesignicons.com/
-  [FontAwesome]: https://fontawesome.com/icons?d=gallery&m=free
+  [FontAwesome]: https://fontawesome.com/search?m=free
   [Octicons]: https://octicons.github.com/
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
   [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
@@ -89,12 +89,12 @@ a valid path to any icon bundled with the theme, which are located in the
 [`.icons`][custom icons] directory, and replacing `/` with `-`:
 
 ``` title="Icon"
-:fontawesome-regular-laugh-wink:
+:fontawesome-regular-face-laugh-wink:
 ```
 
 <div class="result" markdown>
 
-:fontawesome-regular-laugh-wink:
+:fontawesome-regular-face-laugh-wink:
 
 </div>
 

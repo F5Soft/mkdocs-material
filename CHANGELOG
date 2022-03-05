@@ -1,3 +1,90 @@
+mkdocs-material-8.2.4+insiders-4.10.1 (2022-03-02)
+
+  * Added missing build dependencies to Dockerfile
+  * Fixed encoding issues in privacy plugin, now forcing UTF-8 encoding
+  * Fixed #3624: Scroll to active navigation item unreliable in Firefox
+  * Fixed #3642: Privacy plugin errors when font setting was omitted
+
+mkdocs-material-8.2.4 (2022-03-02)
+
+  * Fixed malformed Google Fonts URL when a font setting was omitted
+  * Fixed #3648: Fixed specificity issue with admonitions in lists
+  * Fixed #3653: Invalid outdated version banner URL when using instant loading
+
+mkdocs-material-8.2.3+insiders-4.10.0 (2022-02-27)
+
+  * Added support for offline plugin (supersedes offline search support)
+  * Improved built-in privacy plugin to download nested JavaScript assets
+  * Refactored configuration of built-in privacy plugin
+
+mkdocs-material-8.2.3 (2022-02-27)
+
+  * Fixed #3578: Active element in table of contents off-by-one on large screens
+
+mkdocs-material-8.2.2 (2022-02-26)
+
+  * Added automatic removal of query parameter when search is closed
+  * Fixed #3599: Anchors always overriden when using navigation tracking
+
+mkdocs-material-8.2.1+insiders-4.9.1 (2022-02-21)
+
+  * Fixed #3610: missing lxml dependency for privacy plugin
+  * Fixed error when charset is missing in content-type header
+
+mkdocs-material-8.2.1+insiders-4.9.0 (2022-02-20)
+
+  * Added privacy plugin: automatic downloading of external assets
+
+mkdocs-material-8.2.1 (2022-02-17)
+
+  * Fixed module 'material.plugins' not being found (8.2.0 regression)
+
+mkdocs-material-8.2.0 (2022-02-17)
+
+  * Added native support for Mermaid.js diagrams
+  * Added native support for tags (with search integration)
+  * Added support for staying on page when switching versions
+
+mkdocs-material-8.1.11+insiders-4.8.3 (2022-02-13)
+
+  * Fixed #3560: Mermaid diagrams don't render for file:// locations
+
+mkdocs-material-8.1.11+insiders-4.8.2 (2022-02-10)
+
+  * Fixed #3559: Mermaid diagrams don't render inside closed details
+
+mkdocs-material-8.1.11 (2022-02-10)
+
+  * Added Portuguese (Brasilian) translations
+  * Updated FontAwesome to v6 (might lead to missing icons)
+  * Fixed #3545: Color palette toggle and search overlaying version selector
+
+mkdocs-material-8.1.10+insiders-4.8.1 (2022-02-06)
+
+  * Fixed jump back to top on mobile when using anchor following
+
+mkdocs-material-8.1.10+insiders-4.8.0 (2022-02-06)
+
+  * Added support for anchor following table of contents (= auto scroll)
+
+mkdocs-material-8.1.10 (2022-02-06)
+
+  * Fixed cutoff of very wide logos in the sidebar on mobile
+
+mkdocs-material-8.1.9+insiders-4.7.2 (2022-02-02)
+
+  * Fixed #3526: Transparent sidebar title due to Safari bug
+  * Fixed #3528: Firefox sometimes clips text in flow chart diagrams
+
+mkdocs-material-8.1.9+insiders-4.7.1 (2022-01-30)
+
+  * Fixed #3506: Tags index not respecting title set via front matter
+
+mkdocs-material-8.1.9 (2022-01-30)
+
+  * Added support for mkdocs.yml validation and auto-complete
+  * Fixed errors in Latvian translations
+
 mkdocs-material-8.1.8+insiders-4.7.0 (2022-01-25)
 
   * Added native support for offline search

@@ -20,12 +20,24 @@
  * IN THE SOFTWARE.
  */
 
-import { combineLatest, map } from "rxjs"
+import {
+  EMPTY,
+  Subject,
+  combineLatest,
+  filter,
+  fromEvent,
+  map,
+  of,
+  switchMap,
+  switchMapTo
+} from "rxjs"
 
 import { configuration } from "~/_"
 import {
   getElement,
-  requestJSON
+  getLocation,
+  requestJSON,
+  setLocation
 } from "~/browser"
 import { getComponentElements } from "~/components"
 import {
@@ -33,14 +45,31 @@ import {
   renderVersionSelector
 } from "~/templates"
 
+import { fetchSitemap } from "../sitemap"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Setup options
+ */
+interface SetupOptions {
+  document$: Subject<Document>         /* Document subject */
+}
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
  * Set up version selector
+ *
+ * @param options - Options
  */
-export function setupVersionSelector(): void {
+export function setupVersionSelector(
+  { document$ }: SetupOptions
+): void {
   const config = configuration()
   const versions$ = requestJSON<Version[]>(
     new URL("../versions.json", config.base)
@@ -57,22 +86,71 @@ export function setupVersionSelector(): void {
       })
     )
 
+  /* Intercept inter-version navigation */
+  combineLatest([versions$, current$])
+    .pipe(
+      map(([versions, current]) => new Map(versions
+        .filter(version => version !== current)
+        .map(version => [
+          `${new URL(`../${version.version}/`, config.base)}`,
+          version
+        ])
+      )),
+      switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
+        .pipe(
+          filter(ev => !ev.metaKey && !ev.ctrlKey),
+          switchMap(ev => {
+            if (ev.target instanceof Element) {
+              const el = ev.target.closest("a")
+              if (el && !el.target && urls.has(el.href)) {
+                ev.preventDefault()
+                return of(el.href)
+              }
+            }
+            return EMPTY
+          }),
+          switchMap(url => {
+            const { version } = urls.get(url)!
+            return fetchSitemap(new URL(url))
+              .pipe(
+                map(sitemap => {
+                  const location = getLocation()
+                  const path = location.href.replace(config.base, "")
+                  return sitemap.includes(path)
+                    ? new URL(`../${version}/${path}`, config.base)
+                    : new URL(url)
+                })
+              )
+          })
+        )
+      )
+    )
+      .subscribe(url => setLocation(url))
+
   /* Render version selector and warning */
   combineLatest([versions$, current$])
     .subscribe(([versions, current]) => {
       const topic = getElement(".md-header__topic")
       topic.appendChild(renderVersionSelector(versions, current))
+    })
+
+  /* Integrate outdated version banner with instant loading */
+  document$.pipe(switchMapTo(current$))
+    .subscribe(current => {
 
       /* Check if version state was already determined */
-      if (__md_get("__outdated", sessionStorage) === null) {
+      let outdated = __md_get("__outdated", sessionStorage)
+      if (outdated === null) {
         const latest = config.version?.default || "latest"
-        const outdated = !current.aliases.includes(latest)
+        outdated = !current.aliases.includes(latest)
 
         /* Persist version state in session storage */
         __md_set("__outdated", outdated, sessionStorage)
-        if (outdated)
-          for (const warning of getComponentElements("outdated"))
-            warning.hidden = false
       }
+
+      /* Unhide outdated version banner */
+      if (outdated)
+        for (const warning of getComponentElements("outdated"))
+          warning.hidden = false
     })
 }

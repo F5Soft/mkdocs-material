@@ -122,7 +122,7 @@ if (feature("navigation.instant"))
 
 /* Set up version selector */
 if (config.version?.provider === "mike")
-  setupVersionSelector()
+  setupVersionSelector({ document$ })
 
 /* Always close drawer and search on navigation */
 merge(location$, target$)
@@ -229,7 +229,7 @@ const content$ = defer(() => merge(
 
   /* Table of contents */
   ...getComponentElements("toc")
-    .map(el => mountTableOfContents(el, { viewport$, header$ })),
+    .map(el => mountTableOfContents(el, { viewport$, header$, target$ })),
 
   /* Back-to-top button */
   ...getComponentElements("top")

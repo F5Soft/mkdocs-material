@@ -6,6 +6,49 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.4 <small>_ March 2, 2022</small> { id="8.2.4" }
+
+- Fixed malformed Google Fonts URL when a font setting was omitted
+- Fixed #3648: Fixed specificity issue with admonitions in lists
+- Fixed #3653: Invalid outdated version banner URL when using instant loading
+
+### 8.2.3 <small>_ February 27, 2022</small> { id="8.2.3" }
+
+- Fixed #3578: Active element in table of contents off-by-one on large screens
+
+### 8.2.2 <small>_ February 26, 2022</small> { id="8.2.2" }
+
+- Added automatic removal of query parameter when search is closed
+- Fixed #3599: Anchors always overriden when using navigation tracking
+
+### 8.2.1 <small>_ February 17, 2022</small> { id="8.2.1" }
+
+- Fixed module `material.plugins` not being found (8.2.0 regression)
+
+### 8.2.0 <small>_ February 17, 2022</small> { id="8.2.0" }
+
+- Added native support for Mermaid.js diagrams
+- Added native support for tags (with search integration)
+- Added support for staying on page when switching versions
+
+### 8.1.11 <small>_ February 10, 2022</small> { id="8.1.11" }
+
+- Added Portuguese (Brasilian) translations
+- Updated FontAwesome to v6 – [check which icons were renamed here]
+- Fixed #3545: Color palette toggle and search overlaying version selector
+
+  [check which icons were renamed here]: https://fontawesome.com/docs/web/setup/upgrade/whats-changed#icons-renamed-in-version-6
+
+### 8.1.10 <small>_ February 6, 2022</small> { id="8.1.10" }
+
+- Fixed cutoff of very wide logos in the sidebar on mobile
+
+### 8.1.9 <small>_ January 30, 2022</small> { id="8.1.9" }
+
+- [Added support for `mkdocs.yml` validation and auto-complete][validation]
+- Fixed errors in Latvian translations
+
+  [validation]: ../creating-your-site.md#minimal-configuration
 
 ### 8.1.8 <small>_ January 23, 2022</small> { id="8.1.8" }
 
@@ -703,7 +746,7 @@ template: overrides/main.html
 
 ### 4.6.0 <small>_ December 11, 2019</small> { id="4.6.0" }
 
-- Added support for [git-revision-date-localized-plugin][1]
+- Added support for [git-revision-date-localized-plugin]
 - Fixed invalid character in Google Fonts URL
 
   [git-revision-date-localized-plugin]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin

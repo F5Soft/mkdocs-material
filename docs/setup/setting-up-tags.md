@@ -11,10 +11,9 @@ can help to discover relevant information faster.
 
 ## Configuration
 
-### Built-in tags
+### Built-in tags plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.7.0][Insiders] ·
+[:octicons-tag-24: 8.2.0][tags support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -47,14 +46,14 @@ The following configuration options are available:
     option is not specified, tags are still rendered and searchable,
     but without a tags index.
 
-  [Insiders]: ../insiders/index.md
+  [tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [adding a tags index]: #adding-a-tags-index
 
 ## Usage
 
 ### Adding tags
 
-When both, the [built-in tags] plugin and [Metadata] extension are enabled,
+When both, the [built-in tags plugin] and [Metadata] extension are enabled,
 tags can be added for a document with custom front matter. Add the following
 lines at the top of a Markdown file:
 
@@ -80,14 +79,14 @@ following screenshots:
 
     [![Tag search preview]][Tag search preview]
 
-  [built-in tags]: #built-in-tags
+  [built-in tags plugin]: #built-in-tags-plugin
   [Metadata]: extensions/python-markdown.md#metadata
   [Tags preview]: ../assets/screenshots/tags.png
   [Tag search preview]: ../assets/screenshots/tags-search.png
 
 ### Adding a tags index
 
-The [built-in tags] plugin allows to define a file to render a [tags index]
+The [built-in tags plugin] allows to define a file to render a [tags index]
 [tags.tags_file], which can be any page that is part of the `nav` section. To
 add a tags index, create a page, e.g. `tags.md`:
 

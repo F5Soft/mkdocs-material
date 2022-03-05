@@ -146,12 +146,19 @@ const assets$ = concat(
     })),
 
   /* Copy images and configurations */
-  ...[".icons/*.svg", "assets/images/*", "**/*.{py,yml}"]
+  ...[".icons/*.svg", "assets/images/*", "**/*.yml"]
     .map(pattern => copyAll(pattern, {
       from: "src",
       to: base
     }))
 )
+
+/* Copy plugins and extensions */
+const sources$ = copyAll("**/*.py", {
+  from: "src",
+  to: base,
+  watch: process.argv.includes("--watch")
+})
 
 /* ------------------------------------------------------------------------- */
 
@@ -295,6 +302,57 @@ const index$ = zip(icons$, emojis$)
     ))
   )
 
+/* ------------------------------------------------------------------------- */
+
+/* Build schema */
+const schema$ = merge(
+
+  /* Compute fonts schema */
+  defer(() => import("google-fonts-complete"))
+    .pipe(
+      map(({ default: fonts }) => Object.keys(fonts)),
+      map(fonts => ({
+        "$schema": "https://json-schema.org/draft-07/schema",
+        "title": "Google Fonts",
+        "markdownDescription": "https://fonts.google.com/",
+        "type": "string",
+        "oneOf": fonts.map(font => ({
+          "title": font,
+          "markdownDescription": `https://fonts.google.com/specimen/${
+            font.replace(/\s+/g, "+")
+          }`,
+          "enum": [
+            font
+          ],
+        }))
+      })),
+      switchMap(data => write(
+        "docs/schema/assets/fonts.json",
+        JSON.stringify(data, undefined, 2)
+      ))
+    ),
+
+  /* Compute icons schema */
+  icons$
+    .pipe(
+      map(icons => [...icons.values()]),
+      map(icons => ({
+        "$schema": "https://json-schema.org/draft-07/schema",
+        "title": "Icon",
+        "markdownDescription": [
+          "https://squidfunk.github.io/mkdocs-material",
+          "reference/icons-emojis/#search"
+        ].join("/"),
+        "type": "string",
+        "enum": icons.map(icon => icon.replace(".svg", ""))
+      })),
+      switchMap(data => write(
+        "docs/schema/assets/icons.json",
+        JSON.stringify(data, undefined, 2)
+      ))
+    )
+)
+
 /* ----------------------------------------------------------------------------
  * Program
  * ------------------------------------------------------------------------- */
@@ -302,8 +360,8 @@ const index$ = zip(icons$, emojis$)
 /* Assemble pipeline */
 const build$ =
   process.argv.includes("--dirty")
-    ? templates$
-    : concat(assets$, merge(templates$, index$))
+    ? merge(templates$, sources$)
+    : concat(assets$, merge(templates$, sources$, index$, schema$))
 
 /* Let's get rolling */
 build$.subscribe()

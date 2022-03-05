@@ -92,6 +92,50 @@ slightly different:
   [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
   [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
+???+ tip "Recommended: [configuration validation and auto-complete]"
+
+    In order to minimize friction and maximize productivity, Material for MkDocs 
+    provides its own [schema.json][^1] for `mkdocs.yml`. If your editor supports
+    YAML schema validation, it's definitely recommended to set it up:
+
+    === "Visual Studio Code"
+
+        1.  Install [`vscode-yaml`][vscode-yaml] for YAML language support.
+        2.  Add the schema under the `yaml.schemas` key in your user or
+            workspace [`settings.json`][settings.json]:
+
+            ``` json
+            {
+              "yaml.schemas": {
+                "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+              }
+            }
+            ```
+
+    === "Other"
+
+        1.  Ensure your editor of choice has support for YAML schema validation.
+        2.  Add the following lines at the top of `mkdocs.yml`:
+
+            ``` yaml
+            # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+            ```
+
+  [^1]:
+    If you're a MkDocs plugin or Markdown extension author and your project
+    works with Material for MkDocs, you're very much invited to contribute a
+    schema for your [extension] or [plugin] as part of a pull request on GitHub.
+    If you already have a schema defined, or wish to self-host your schema to
+    reduce duplication, you can add it via [$ref].
+
+  [configuration validation and auto-complete]: https://twitter.com/squidfunk/status/1487746003692400642
+  [schema.json]: schema.json
+  [vscode-yaml]: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+  [settings.json]: https://code.visualstudio.com/docs/getstarted/settings
+  [extension]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/extensions
+  [plugin]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/plugins
+  [$ref]: https://json-schema.org/understanding-json-schema/structuring.html#ref
+
 ### Advanced configuration
 
 Material for MkDocs comes with many configuration options. The setup section
@@ -104,6 +148,7 @@ and much more:
 - [Changing the fonts]
 - [Changing the language]
 - [Changing the logo and icons]
+- [Ensuring data privacy]
 - [Setting up navigation]
 - [Setting up site search]
 - [Setting up site analytics]
@@ -114,6 +159,7 @@ and much more:
 - [Setting up the footer]
 - [Adding a git repository]
 - [Adding a comment system]
+- [Building for offline usage]
 
 </div>
 
@@ -125,6 +171,7 @@ technical writing experience.
   [Changing the fonts]: setup/changing-the-fonts.md
   [Changing the language]: setup/changing-the-language.md
   [Changing the logo and icons]: setup/changing-the-logo-and-icons.md
+  [Ensuring data privacy]: setup/ensuring-data-privacy.md
   [Setting up navigation]: setup/setting-up-navigation.md
   [Setting up site search]: setup/setting-up-site-search.md
   [Setting up site analytics]: setup/setting-up-site-analytics.md
@@ -135,6 +182,7 @@ technical writing experience.
   [Setting up the footer]: setup/setting-up-the-footer.md
   [Adding a git repository]: setup/adding-a-git-repository.md
   [Adding a comment system]: setup/adding-a-comment-system.md
+  [Building for offline usage]: setup/building-for-offline-usage.md
   [Markdown extensions]: setup/extensions/index.md
 
 ## Previewing as you write

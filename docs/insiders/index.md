@@ -13,7 +13,7 @@ that new features are first exclusively released to sponsors as part of
 
 <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
-    <iframe src="https://streamable.com/e/ihhxw0" allowfullscreen></iframe>
+    <iframe src="https://streamable.com/e/yslhdu" allowfullscreen></iframe>
   </div>
   <figcaption markdown>
 
@@ -130,6 +130,9 @@ You can cancel your sponsorship anytime.[^5]
 [![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
 [![Account technologies]](https://www.accounttechnologies.com/){ target=_blank title="Account technologies" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
+[![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
+[![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
+[![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the Volkswagen Group" }
 
 </div>
 
@@ -140,6 +143,9 @@ You can cancel your sponsorship anytime.[^5]
   [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
   [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
+  [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
+  [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
+  [Elli]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png
 
 <hr />
 
@@ -162,8 +168,10 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Offline search] :material-new-box:
-- [x] [Annotations] :material-new-box:
+- [x] [Offline plugin] :material-new-box:
+- [x] [Privacy plugin] :material-new-box:
+- [x] [Table of contents anchor following]
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
@@ -178,10 +186,7 @@ The following features are solely available via Material for MkDocs Insiders:
 - [x] [Cookie consent]
 - [x] [Linking content tabs]
 - [x] [Boosting pages in search]
-- [x] [Tags with search integration]
-- [x] [Stay on page when switching versions]
 - [x] [Custom admonition icons]
-- [x] [Mermaid.js integration]
 
 </div>
 
@@ -194,16 +199,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
-
-#### $ 5,000 – Aji Panca
-
-- [x] [Mermaid.js integration]
-- [x] [Stay on page when switching versions]
-- [x] [Tags with search integration]
-
-  [Mermaid.js integration]: ../reference/diagrams.md
-  [Stay on page when switching versions]: ../setup/setting-up-versioning.md#stay-on-page
-  [Tags with search integration]: ../setup/setting-up-tags.md
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -230,12 +225,14 @@ are released for general availability.
 - [x] [Social cards]
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
+- [x] [Table of contents anchor following]
+- [x] Sidebars automatically scroll to active item
 - [ ] Stay on page when switching languages
-- [ ] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
   [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
+  [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
 
 #### $ 10,000 – Carolina Reaper
 
@@ -244,14 +241,14 @@ are released for general availability.
 - [x] [Tokenizer with lookahead]
 - [x] [Advanced search highlighting]
 - [x] [Excluding content from search]
-- [x] [Offline search]
+- [x] [Offline plugin]
 
   [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
   [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
   [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
   [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
-  [Offline search]: ../setup/setting-up-site-search.md#offline-search
+  [Offline plugin]: ../setup/building-for-offline-usage.md
 
 #### $ 12,000 – Piri Piri
 
@@ -264,11 +261,27 @@ are released for general availability.
   [Annotations]: ../reference/annotations.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
 
+#### $ 14,000 – Goat's Horn
+
+- [x] [Privacy plugin]
+- [ ] and much more, to be announced ...
+
+  [Privacy plugin]: ../setup/ensuring-data-privacy.md
+
 ### Goals completed
 
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 5,000 – Aji Panca
+
+- [x] [Mermaid.js integration]
+- [x] Stay on page when switching versions
+- [x] [Tags with search integration]
+
+  [Mermaid.js integration]: ../reference/diagrams.md
+  [Tags with search integration]: ../setup/setting-up-tags.md
 
 #### $ 4,000 – Ghost Pepper
 

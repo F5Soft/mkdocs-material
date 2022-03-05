@@ -6,6 +6,53 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.10.1 <small>_ March 2, 2022</small> { id="4.10.1" }
+
+- Added missing build dependencies to Dockerfile
+- Fixed encoding issues in privacy plugin, now forcing UTF-8 encoding
+- Fixed #3624: Scroll to active navigation item unreliable in Firefox
+- Fixed #3642: Privacy plugin errors when font setting was omitted
+
+### 4.10.0 <small>_ February 27, 2022</small> { id="4.10.0" }
+
+- Added support for offline plugin (supersedes offline search support)
+- Improved built-in privacy plugin to download nested JavaScript assets
+- Refactored configuration of built-in privacy plugin
+
+### 4.9.1 <small>_ February 21, 2022</small> { id="4.9.1" }
+
+- Fixed #3610: missing `lxml` dependency for privacy plugin
+- Fixed error when charset is missing in `content-type` header
+
+### 4.9.0 <small>_ February 20, 2022</small> { id="4.9.0" }
+
+- Added privacy plugin: automatic downloading of external assets
+
+### 4.8.3 <small>_ February 13, 2022</small> { id="4.8.3" }
+
+- Fixed #3560: Mermaid diagrams don't render for `file://` locations
+
+### 4.8.2 <small>_ February 10, 2022</small> { id="4.8.2" }
+
+- Fixed #3559: Mermaid diagrams don't render inside closed `details`
+
+### 4.8.1 <small>_ February 6, 2022</small> { id="4.8.1" }
+
+- Fixed jump back to top on mobile when using anchor following
+
+### 4.8.0 <small>_ February 6, 2022</small> { id="4.8.0" }
+
+- Added support for anchor following table of contents (= auto scroll)
+
+### 4.7.2 <small>_ February 2, 2022</small> { id="4.7.2" }
+
+- Fixed #3526: Transparent sidebar title due to Safari bug
+- Fixed #3528: Firefox sometimes clips text in flow chart diagrams
+
+### 4.7.1 <small>_ January 30, 2022</small> { id="4.7.1" }
+
+- Fixed #3506: Tags index not respecting title set via front matter
+
 ### 4.7.0 <small>_ January 25, 2022</small> { id="4.7.0" }
 
 - Added native support for offline search
