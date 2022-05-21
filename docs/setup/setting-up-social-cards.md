@@ -39,7 +39,7 @@ The social preview image for the page on [setting up site analytics].
 
 ### Built-in social plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.12.0][Insiders] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
@@ -52,6 +52,10 @@ Then, add the following lines to `mkdocs.yml`:
 plugins:
   - social
 ```
+
+> If you need to be able to build your documentation with and without
+> [Insiders], please refer to the [built-in plugins] section to learn how
+> shared configurations help to achieve this.
 
 The following configuration options are available:
 
@@ -113,6 +117,7 @@ The following configuration options are available:
   [Insiders]: ../insiders/index.md
   [dependencies]: #dependencies
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
   [Google Fonts]: https://fonts.google.com

@@ -8,8 +8,7 @@ title: Insiders
 Material for MkDocs follows the __sponsorware__ release strategy, which means
 that new features are first exclusively released to sponsors as part of
 [Insiders]. Read on to learn [what sponsorships achieve],
-[how to become a sponsor] to get access to Insiders, and
-[what's in for you][available features]!
+[how to become a sponsor] to get access to Insiders, and [what's in for you]!
 
 <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
@@ -26,15 +25,16 @@ This documentation is built with Insiders
   [Insiders]: #what-is-insiders
   [what sponsorships achieve]: #what-sponsorships-achieve
   [how to become a sponsor]: #how-to-become-a-sponsor
-  [available features]: #available-features
+  [what's in for you]: #whats-in-for-me
   [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
 ## What is Insiders?
 
 Material for MkDocs Insiders is a private fork of Material for MkDocs, hosted as
-a private GitHub repository. Almost[^1] all new features are developed as part of
-this fork, which means that they are immediately available to all eligible
-sponsors, as they are made collaborators of this repository.
+a private GitHub repository. Almost[^1] [all new features][what's in for you]
+are developed as part of this fork, which means that they are immediately
+available to all eligible sponsors, as they are made collaborators of this
+repository.
 
   [^1]:
     In general, every new feature is first exclusively released to sponsors, but
@@ -133,6 +133,8 @@ You can cancel your sponsorship anytime.[^5]
 [![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 [![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
 [![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the Volkswagen Group" }
+[![RStudio]](https://solutions.rstudio.com){ target=_blank title="RStudio" }
+[![n8n]](https://n8n.io){ target=_blank title="n8n" }
 
 </div>
 
@@ -146,6 +148,8 @@ You can cancel your sponsorship anytime.[^5]
   [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
   [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
   [Elli]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png
+  [RStudio]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png
+  [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
 
 <hr />
 
@@ -162,14 +166,20 @@ You can cancel your sponsorship anytime.[^5]
 
   [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk
 
-## Available features
+## What's in for me?
 
-The following features are solely available via Material for MkDocs Insiders:
+The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
+access to many additional features__ that you can start using right away, and
+which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Offline plugin] :material-new-box:
-- [x] [Privacy plugin] :material-new-box:
+- [x] [Tooltips] :material-alert-decagram:{ title="Added on May 8, 2022" }
+- [x] [Chinese search support] :material-alert-decagram:{ title="Added on May 5, 2022" }
+- [x] [Tag icons] :material-alert-decagram:{ title="Added on April 24, 2022" }
+- [x] [Card grids]
+- [x] [Offline plugin]
+- [x] [Privacy plugin]
 - [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
@@ -216,7 +226,7 @@ are released for general availability.
 - [x] [Was this page helpful?]
 - [x] [Dismissable announcement bar]
 
-  [Cookie consent]: ../setup/setting-up-site-analytics.md#cookie-consent
+  [Cookie consent]: ../setup/ensuring-data-privacy.md#native-cookie-consent
   [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
   [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 
@@ -225,13 +235,14 @@ are released for general availability.
 - [x] [Social cards]
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
+- [x] [Tag icons]
 - [x] [Table of contents anchor following]
 - [x] Sidebars automatically scroll to active item
-- [ ] Stay on page when switching languages
 
   [Social cards]: ../setup/setting-up-social-cards.md
   [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
+  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
 
 #### $ 10,000 – Carolina Reaper
@@ -253,20 +264,28 @@ are released for general availability.
 #### $ 12,000 – Piri Piri
 
 - [x] [Annotations]
+- [x] [Chinese search support]
 - [x] [Navigation icons]
 - [ ] Navigation status badges
 - [ ] Navigation pruning
 - [ ] Blog
 
   [Annotations]: ../reference/annotations.md
+  [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
 
 #### $ 14,000 – Goat's Horn
 
 - [x] [Privacy plugin]
+- [x] [Card grids]
+- [x] [Tooltips]
+- [ ] [Instant previews]
 - [ ] and much more, to be announced ...
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
+  [Card grids]: ../reference/grids.md
+  [Tooltips]: ../reference/tooltips.md
+  [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed
 

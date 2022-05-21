@@ -23,13 +23,13 @@
 import {
   EMPTY,
   Subject,
+  catchError,
   combineLatest,
   filter,
   fromEvent,
   map,
   of,
-  switchMap,
-  switchMapTo
+  switchMap
 } from "rxjs"
 
 import { configuration } from "~/_"
@@ -74,6 +74,9 @@ export function setupVersionSelector(
   const versions$ = requestJSON<Version[]>(
     new URL("../versions.json", config.base)
   )
+    .pipe(
+      catchError(() => EMPTY) // @todo refactor instant loading
+    )
 
   /* Determine current version */
   const current$ = versions$
@@ -135,7 +138,7 @@ export function setupVersionSelector(
     })
 
   /* Integrate outdated version banner with instant loading */
-  document$.pipe(switchMapTo(current$))
+  document$.pipe(switchMap(() => current$))
     .subscribe(current => {
 
       /* Check if version state was already determined */

@@ -35,7 +35,7 @@ See additional configuration options:
 
 ### Admonition icons
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.4.0][Insiders]
 
 Each of the supported admonition types has a distinct icon, which can be changed
@@ -64,7 +64,7 @@ theme:
 
     === ":octicons-mark-github-16: Octicons"
 
-        ``` yaml title="Admonition with alternate icon set"
+        ``` yaml
         theme:
           icon:
             admonition:
@@ -91,7 +91,7 @@ theme:
 
     === ":fontawesome-brands-font-awesome: FontAwesome"
 
-        ``` yaml title="Admonition with alternate icon set"
+        ``` yaml
         theme:
           icon:
             admonition:
@@ -116,7 +116,7 @@ theme:
         </div>
 
   [Insiders]: ../insiders/index.md
-  [custom icon]: icons-emojis.md#additional-icons
+  [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [supported types]: #supported-types
   [icon search]: icons-emojis.md#search
   [Octicons]: ../assets/screenshots/admonition-octicons.png
@@ -419,7 +419,6 @@ and add the following CSS to an [additional style sheet]:
   .md-typeset .pied-piper > .admonition-title,
   .md-typeset .pied-piper > summary {
     background-color: rgba(43, 155, 70, 0.1);
-    border-color: rgb(43, 155, 70);
   }
   .md-typeset .pied-piper > .admonition-title::before,
   .md-typeset .pied-piper > summary::before {
@@ -442,7 +441,6 @@ and add the following CSS to an [additional style sheet]:
     .md-typeset .pied-piper > .admonition-title,
     .md-typeset .pied-piper > summary {
       background-color: rgba(43, 155, 70, 0.1);
-      border-color: rgb(43, 155, 70);
     }
     .md-typeset .pied-piper > .admonition-title::before,
     .md-typeset .pied-piper > summary::before {

@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/code-tags
+icon: material/code-json
 ---
 
 # Code blocks
@@ -84,7 +84,7 @@ theme:
 
 #### Anchor links
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
@@ -197,7 +197,7 @@ theme:
 
 #### Stripping comments
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
@@ -395,6 +395,39 @@ override it as part of your [additional style sheet]:
   [types of string tokens]: https://pygments.org/docs/tokens/#literals
   [additional style sheet]: ../customization.md#additional-css
   [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
+
+### Annotation tooltip width
+
+If you have a lot of content hosted inside your code annotations, it can be a
+good idea to increase the width of the tooltip by adding the following as part
+of an [additional style sheet]:
+
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+
+    ``` css
+    :root {
+      --md-tooltip-width: 600px;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/extra.css
+    ```
+
+This will render annotations with a larger width:
+
+<div style="--md-tooltip-width: 600px;" markdown>
+
+``` yaml
+# (1)!
+```
+
+1. Muuuuuuuuuuuuuuuch more space for content
+
+</div>
 
 ### Annotations with numbers
 

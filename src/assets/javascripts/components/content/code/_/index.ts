@@ -28,10 +28,12 @@ import {
   defer,
   distinctUntilChanged,
   distinctUntilKeyChanged,
+  filter,
   finalize,
   map,
   mergeWith,
   switchMap,
+  take,
   takeLast,
   takeUntil,
   tap
@@ -40,7 +42,8 @@ import {
 import { feature } from "~/_"
 import {
   getElementContentSize,
-  watchElementSize
+  watchElementSize,
+  watchElementVisibility
 } from "~/browser"
 import { renderClipboardButton } from "~/templates"
 
@@ -153,7 +156,9 @@ export function mountCodeBlock(
   el: HTMLElement, options: MountOptions
 ): Observable<Component<CodeBlock | Annotation>> {
   const { matches: hover } = matchMedia("(hover)")
-  return defer(() => {
+
+  /* Defer mounting of code block - see https://bit.ly/3vHVoVD */
+  const factory$ = defer(() => {
     const push$ = new Subject<CodeBlock>()
     push$.subscribe(({ scrollable }) => {
       if (scrollable && hover)
@@ -173,10 +178,7 @@ export function mountCodeBlock(
     }
 
     /* Handle code annotations */
-    const container = el.closest([
-      ":not(td):not(.code) > .highlight",
-      ".highlighttable"
-    ].join(", "))
+    const container = el.closest(".highlight")
     if (container instanceof HTMLElement) {
       const list = findCandidateList(container)
 
@@ -193,13 +195,14 @@ export function mountCodeBlock(
             tap(state => push$.next(state)),
             finalize(() => push$.complete()),
             map(state => ({ ref: el, ...state })),
-            mergeWith(watchElementSize(container)
-              .pipe(
-                takeUntil(push$.pipe(takeLast(1))),
-                map(({ width, height }) => width && height),
-                distinctUntilChanged(),
-                switchMap(active => active ? annotations$ : EMPTY)
-              )
+            mergeWith(
+              watchElementSize(container)
+                .pipe(
+                  takeUntil(push$.pipe(takeLast(1))),
+                  map(({ width, height }) => width && height),
+                  distinctUntilChanged(),
+                  switchMap(active => active ? annotations$ : EMPTY)
+                )
             )
           )
       }
@@ -213,4 +216,12 @@ export function mountCodeBlock(
         map(state => ({ ref: el, ...state }))
       )
   })
+
+  /* Mount code block on first sight */
+  return watchElementVisibility(el)
+    .pipe(
+      filter(visible => visible),
+      take(1),
+      switchMap(() => factory$)
+    )
 }

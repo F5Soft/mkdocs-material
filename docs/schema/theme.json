@@ -221,6 +221,12 @@
           ]
         },
         {
+          "title": "Site language: Macedonian",
+          "enum": [
+            "mk"
+          ]
+        },
+        {
           "title": "Site language: Mongolian",
           "enum": [
             "mn"
@@ -499,6 +505,17 @@
               "body": "quote: ${1:material/format-quote-close}"
             }
           ]
+        },
+        "tag": {
+          "title": "Tag icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+          "type": "object",
+          "patternProperties": {
+            "^\\w+$": {
+              "$ref": "#/definitions/icon"
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false,
@@ -538,6 +555,13 @@
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#linked-content-tabs",
             "enum": [
               "content.tabs.link"
+            ]
+          },
+          {
+            "title": "Improved tooltips",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/tooltips/#improved-tooltips",
+            "enum": [
+              "content.tooltips"
             ]
           },
           {
@@ -748,11 +772,7 @@
               "$ref": "assets/fonts.json"
             }
           },
-          "additionalProperties": false,
-          "required": [
-            "text",
-            "code"
-          ]
+          "additionalProperties": false
         },
         {
           "title": "Disable Google Fonts",

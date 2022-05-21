@@ -6,6 +6,74 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.15 <small>_ May 14, 2022</small> { id="8.2.15" }
+
+- Added Uzbek translations
+- Fixed spacing for code block results in content tabs
+
+### 8.2.14 <small>_ May 8, 2022</small> { id="8.2.14" }
+
+- Fixed missing top right rounded border on admonition
+- Fixed #3886: `4xx` status codes not handled when using instant loading
+
+### 8.2.13 <small>_ May 2, 2022</small> { id="8.2.13" }
+
+- Fixed #3865: Tags index links to tagged pages 404 on Windows
+- Fixed #3866: Bump required Python version from 3.6+ to 3.7+
+
+### 8.2.12 <small>_ April 30, 2022</small> { id="8.2.12" }
+
+- Added support for GitHub-style hash fragments for dark/light images
+- Improved rendering of nested code blocks in content tabs and annotations
+- Fixed #3862: Upgraded to latest Pygments and Python Markdown Extensions
+
+### 8.2.11 <small>_ April 25, 2022</small> { id="8.2.11" }
+
+- Temporarily pinned Pygments to `<2.12`
+- Temporarily pinned Python Markdown Extensions to `<9.4`
+- Improved rendering of code annotation markers
+
+### 8.2.10 <small>_ April 24, 2022</small> { id="8.2.10" }
+
+- Added Macedonian translations
+- Updated Mermaid.js to version 9.0.1
+- Switched sidebar title in mobile navigation to bold font
+- Fixed color of arrows in class and state diagrams for dark mode
+- Fixed #3836: Inline admonitions overlayed by code block titles
+
+### 8.2.9 <small>_ April 8, 2022</small> { id="8.2.9" }
+
+- Mitigate flicker on color palette switch by disabling all transitions
+- Fixed search suggestions not triggered when following deep link
+- Fixed incorrectly computed header height when using instant loading
+- Fixed #3782: Admonition titles have extra pixels on wide screens in Firefox
+- Fixed #3802: Always render table of contents container (except when hidden)
+
+### 8.2.8 <small>_ March 27, 2022</small> { id="8.2.8" }
+
+- Bumped MkDocs version to 1.3.0 to mitigate breaking changes in Jinja
+- Reverted Jinja version range limitation (added in 8.2.7)
+- Improved styling of annotations and fixed borders of code blocks in tabs
+- Added background color to code blocks in focused/hovered links
+- Added check in tags plugin whether tags overview page exists
+- Fixed #3744: Content tab indicator on wrong position when using back button
+
+### 8.2.7 <small>_ March 24, 2022</small> { id="8.2.7" }
+
+- Temporarily limit Jinja version range to < 3.1 due to breaking changes
+
+### 8.2.6 <small>_ March 23, 2022</small> { id="8.2.6" }
+
+- Fixed #3695: Deprecation warning for unescaped backslashes in templates
+- Fixed #3696: Annotations not mounted in some Terraform code blocks
+- Fixed #3698: Annotations not mounted in long code blocks (8.2.5 regression)
+
+### 8.2.5 <small>_ March 6, 2022</small> { id="8.2.5" }
+
+- Fixed #3596: Mermaid not working when headline with name 'Mermaid' present
+- Fixed #3643: Reduce time to render pages with thousands of code blocks
+- Fixed #3665: Missing styles for Mermaid.js flowcharts cluster labels
+
 ### 8.2.4 <small>_ March 2, 2022</small> { id="8.2.4" }
 
 - Fixed malformed Google Fonts URL when a font setting was omitted

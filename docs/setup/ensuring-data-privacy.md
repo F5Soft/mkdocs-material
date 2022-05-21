@@ -7,22 +7,103 @@ template: overrides/main.html
 Material for MkDocs makes compliance with data privacy regulations very easy, 
 as it offers a native [cookie consent] solution to seek explicit consent from
 users before setting up [tracking]. Additionally, external assets can be
-automatically downloaded for self-hosting.
+automatically downloaded for [self-hosting].
 
-  [cookie consent]: setting-up-site-analytics.md#cookie-consent
+  [cookie consent]: #native-cookie-consent
   [tracking]: setting-up-site-analytics.md
+  [self-hosting]: #built-in-privacy-plugin
 
 ## Configuration
 
+### Cookie consent { #native-cookie-consent }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.10.0][Insiders] ·
+:octicons-milestone-24: Default: _none_
+
+Material for MkDocs ships a native and extensible cookie consent form which
+asks the user for his consent prior to sending any data via analytics. Add the
+following to `mkdocs.yml`:
+
+``` yaml
+extra:
+  consent:
+    title: Cookie consent
+    description: >- # (1)!
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+```
+
+1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
+    terms of service or other parts of the site.
+
+Note that both, `title` and `description`, are required. If Google Analytics
+was configured via `mkdocs.yml`, the cookie consent will automatically include
+a setting for the user to disable it. Furthermore, [custom cookies] can be
+integrated by using the `cookies` field:
+
+===  "Custom cookie name"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics: Custom name # (1)!
+    ```
+
+    1.  The default name of the `analytics` cookie is `Google Analytics`.
+
+===  "Custom initial state"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics:
+            name: Google Analytics
+            checked: false
+    ```
+
+===  "Custom cookie"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics: Google Analytics # (1)!
+          custom: Custom cookie
+    ```
+
+    1.  If you add a custom cookie to the `cookies` field, the `analytics`
+        cookie  must be added back explicitly, or analytics won't be triggered.
+
+When a user first visits your site, a cookie consent form is rendered:
+
+[![cookie consent enabled]][cookie consent enabled]
+
+In order to comply with GDPR, users must be able to change their cookie settings
+at any time. This can be done by creating a simple link as part of any document,
+e.g. your privacy policy:
+
+``` markdown
+[Change cookie settings](#__consent){ .md-button }
+```
+
+  [Insiders]: ../insiders/index.md
+  [custom cookies]: #custom-cookies
+  [cookie consent enabled]: ../assets/screenshots/consent.png
+
 ### Built-in privacy plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.9.0][Insiders] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
 The built-in privacy plugin automatically identifies [external assets] as part
-of the build process and download all assets for dead simple self-hosting. Add
+of the build process and downloads all assets for very simple self-hosting. Add
 the following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -34,6 +115,10 @@ plugins:
     `plugins`, as it will scan the resulting HTML for resources to download and
     replace. If a plugin after the privacy plugin adds further
     [external assets], these assets will not be downloaded.
+
+> If you need to be able to build your documentation with and without
+> [Insiders], please refer to the [built-in plugins] section to learn how
+> shared configurations help to achieve this.
 
 The following configuration options are available:
 
@@ -85,6 +170,37 @@ The following configuration options are available:
           externals_directory: assets/externals
     ```
 
+`externals_exclude`{ #externals-exclude }
+
+:   :octicons-milestone-24: Default: _none_ – This option allows to exclude
+    certain external assets from processing by the privacy plugin, so they will
+    not be downloaded and bundled during the build:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          externals_exclude: # (1)!
+            - cdn.jsdelivr.net/npm/mathjax@3/* 
+            - giscus.app/*
+    ```
+
+    1.  [MathJax] loads web fonts for typesetting of mathematical content
+        through relative URLs, and thus cannot be automatically bundled by the
+        privacy plugin. [MathJax can be self-hosted].
+
+        Giscus, which we recommend to use as a [comment system], uses a technique
+        called code-splitting to load only the code that is necessary, which
+        is implemented via relative URLs. [Giscus can be self-hosted] as well.
+
+    Excluding specific external assets can be necessary if they contain
+    dynamically created or relative URLs, which can't be resolved by the privacy
+    plugin due to [technical limitations].
+
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+  [MathJax]: ../reference/mathjax.md
+  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
+  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
+  [comment system]: adding-a-comment-system.md
   [external assets]: #how-it-works
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 
@@ -117,7 +233,7 @@ The following configuration options are available:
 The [built-in privacy plugin] scans the resulting HTML for links to external
 resources, including external scripts, style sheets, images and web fonts, and
 downloads them to bundle them with your documentation site. Every URL refering
-to an external resource, no matter if part of a template or Markdown file is
+to an external resource, no matter if part of a template or Markdown file, is
 then replaced with the URL to the local copy. An example:
 
 ``` html
@@ -148,7 +264,7 @@ removed during the build process.
     ``` { .sh id="example" }
     .
     └─ assets/externals/
-       ├─ cdnjs.cloudflare.com/ajax/tablesort/5.2.1/tablesort.min.js
+       ├─ unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
        ├─ fonts.googleapis.com/css
        ├─ fonts.gstatic.com/s/
        │  ├─ roboto/v29/
@@ -269,4 +385,28 @@ Instead, always use fully qualified URLs:
 const url ="https://polyfill.io/v3/polyfill.min.js"
 ```
 
-  [Insiders]: ../insiders/index.md
+## Customization
+
+### Custom cookies
+
+If you've customized the [cookie consent] and added a `custom` cookie, the user
+will be prompted to accept your custom cookie. Use [additional JavaScript] to
+check whether the user accepted it:
+
+=== ":octicons-file-code-16: docs/javascripts/consent.js"
+
+    ``` js
+    var consent = __md_get("__consent")
+    if (consent && consent.custom) {
+      /* The user accepted the cookie */
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_javascript:
+      - javascripts/consent.js
+    ```
+
+  [additional JavaScript]: ../customization.md#additional-javascript

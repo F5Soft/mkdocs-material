@@ -6,6 +6,45 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.15.1 <small>_ May 14, 2022</small> { id="4.15.1" }
+
+- Fixed #3531: Added prev/next buttons to content tabs
+- Fixed tooltip positioning when host element is hidden
+- Improved performance of element focus obervables
+
+### 4.15.0 <small>_ May 8, 2022</small> { id="4.15.0" }
+
+- Added support for improved tooltips
+- Fixed #3785: Show tooltip on hover for overflowing navigation link
+
+### 4.14.0 <small>_ May 5, 2022</small> { id="4.14.0" }
+
+- Added Chinese language support to built-in search plugin
+- Fixed all-numeric page titles raising error in social plugin
+
+### 4.13.2 <small>_ April 30, 2022</small> { id="4.13.2" }
+
+- Improved caching of downloaded resources in privacy plugin
+- Fixed #3851: External images not downloaded by privacy plugin
+
+### 4.13.1 <small>_ April 25, 2022</small> { id="4.13.1" }
+
+- Fixed #3839: Tags plugin breaks without icons (4.13.0 regression)
+
+### 4.13.0 <small>_ April 24, 2022</small> { id="4.13.0" }
+
+- Added support for tag icons
+
+### 4.12.0 <small>_ March 27, 2022</small> { id="4.12.0" }
+
+- Added support for card grids and grid layouts
+- Fixed #3685: Annotations sometimes broken when using instant loading 
+- Fixed #3742: Automatically add Mermaid.js when building for offline usage
+
+### 4.11.0 <small>_ March 6, 2022</small> { id="4.11.0" }
+
+- Added support for excluding external assets from privacy plugin
+
 ### 4.10.1 <small>_ March 2, 2022</small> { id="4.10.1" }
 
 - Added missing build dependencies to Dockerfile

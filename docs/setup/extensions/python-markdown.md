@@ -34,8 +34,8 @@ No configuration options are available. See reference for usage:
 
   [Abbreviations]: https://python-markdown.github.io/extensions/abbreviations/
   [Abbreviations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [Adding abbreviations]: ../../reference/abbreviations.md#adding-abbreviations
-  [Adding a glossary]: ../../reference/abbreviations.md#adding-a-glossary
+  [Adding abbreviations]: ../../reference/tooltips.md#adding-abbreviations
+  [Adding a glossary]: ../../reference/tooltips.md#adding-a-glossary
 
 ### Admonition
 
@@ -82,16 +82,22 @@ markdown_extensions:
 No configuration options are available. See reference for usage:
 
 - [Using annotations]
+- [Using grids]
 - [Adding buttons]
-- [Adding icons with colors]
+- [Adding tooltips]
+- [Using icons with colors]
+- [Using icons with animations]
 - [Image alignment]
 - [Image lazy-loading]
 
   [Attribute Lists]: https://python-markdown.github.io/extensions/attr_list/
   [Attribute Lists support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Attribute Lists limitations]: https://python-markdown.github.io/extensions/attr_list/#limitations
+  [Using grids]: ../../reference/grids.md#using-grids
   [Adding buttons]: ../../reference/buttons.md#adding-buttons
-  [Adding icons with colors]: ../../reference/buttons.md#with-colors
+  [Adding tooltips]: ../../reference/tooltips.md#adding-tooltips
+  [Using icons with colors]: ../../reference/icons-emojis.md#with-colors
+  [Using icons with animations]: ../../reference/icons-emojis.md#with-animations
   [Image alignment]: ../../reference/images.md#image-alignment
   [Image lazy-loading]: ../../reference/images.md#image-lazy-loading
 
@@ -200,11 +206,13 @@ markdown_extensions:
 No configuration options are available. See reference for usage:
 
 - [Using annotations]
+- [Using grids]
 - [Image captions]
 
   [Markdown in HTML]: https://python-markdown.github.io/extensions/md_in_html/
   [Markdown in HTML support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Using annotations]: ../../reference/annotations.md#usage
+  [Using grids]: ../../reference/grids.md#usage
   [Image captions]: ../../reference/images.md#image-captions
 
 ### Table of Contents

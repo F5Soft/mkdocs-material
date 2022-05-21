@@ -142,13 +142,22 @@
     }
 
     // Hide images for light mode
-    img[src$="#only-light"] {
+    img[src$="#only-light"],
+    img[src$="#gh-light-mode-only"] {
       display: none;
     }
 
     // Show images for dark mode
-    img[src$="#only-dark"] {
+    img[src$="#only-dark"],
+    img[src$="#gh-dark-mode-only"] {
       display: initial;
     }
+  }
+
+  // Switching in progress - disable all transitions temporarily
+  [data-md-color-switching] *,
+  [data-md-color-switching] *::before,
+  [data-md-color-switching] *::after {
+    transition-duration: 0ms !important; // stylelint-disable-line
   }
 }
