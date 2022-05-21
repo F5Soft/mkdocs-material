@@ -500,7 +500,8 @@ kbd {
       padding: px2em(12px, 12.8px) px2em(16px, 12.8px);
       font-weight: 700;
       vertical-align: top;
-
+      background-color: var(--md-code-bg-color);
+  
       // Links in table headings
       a {
         color: inherit;
@@ -512,6 +513,7 @@ kbd {
       padding: px2em(12px, 12.8px) px2em(16px, 12.8px);
       vertical-align: top;
       border-top: px2rem(1px) solid var(--md-typeset-table-color);
+      background-color: var(--md-code-bg-color--light);
     }
 
     // Table body row
