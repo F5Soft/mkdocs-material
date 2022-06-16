@@ -1,8 +1,92 @@
+mkdocs-material-8.3.5+insiders-4.18.1 (2022-06-14)
+
+  * Fixed #3990: Chinese search highlighting not working on non-boundaries
+
+mkdocs-material-8.3.5 (2022-06-14)
+
+  * Fixed #4012: Stay on page not working for alias of active version
+
+mkdocs-material-8.3.4+insiders-4.18.0 (2022-06-11)
+
+  * Added support for automatic dark/light mode
+  * Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
+mkdocs-material-8.3.4 (2022-06-11)
+
+  * Fixed #4004: Tags with multiple words not searchable
+
+mkdocs-material-8.3.3 (2022-06-07)
+
+  * Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)
+
+mkdocs-material-8.3.2+insiders-4.17.2 (2022-06-05)
+
+  * Added support for custom jieba dictionaries (Chinese search)
+
+mkdocs-material-8.3.2+insiders-4.17.1 (2022-06-05)
+
+  * Added support for cookie consent reject button
+  * Added support for cookie consent custom button ordering
+  * Fixed #3988: Content tab not focused after alternating anchor links
+
+mkdocs-material-8.3.2 (2022-06-05)
+
+  * Fixed #3987: Custom admonition icons don't work when defining color palette
+
+mkdocs-material-8.3.1+insiders-4.17.0 (2022-06-04)
+
+  * Added support for content tabs anchor links (deep linking)
+  * Fixed #3975: Detect composition events in search interface (Chinese)
+  * Fixed #3980: Search plugin doesn't use title set via front matter
+
+mkdocs-material-8.3.1 (2022-06-04)
+
+  * Bump required Jinja version to 3.0.2
+  * Removed unnecessary conditions in templates
+  * Fixed scroll offset when content tabs are brought into view
+  * Fixed #3977: Content tabs snapping oddly in Firefox
+  * Fixed #3983: Missing condition in footer partial (8.3.0 regression)
+
+mkdocs-material-8.3.0 (2022-06-02)
+
+  * Added support for custom admonition icons
+  * Added support for linking of content tabs
+  * Added support for boosting pages in search
+  * Added support for hiding footer navigation
+  * Added previous/next indicators to content tabs
+  * Improved typeset link colors in light and dark modes
+
+mkdocs-material-8.2.16+insiders-4.16.2 (2022-05-28)
+
+  * Fixed #3961: Nested sections triggered build error for navigation tabs
+
+mkdocs-material-8.2.16+insiders-4.16.1 (2022-05-28)
+
+  * Switched feedback widget rating titles to tooltips
+  * Improved contrast of link colors for light/dark color schemes
+  * Fixed #3950: Sticky navigation tabs rendering broken (4.15.2 regression)
+  * Fixed #3958: Links invisible when using white primary color
+
+mkdocs-material-8.2.16 (2022-05-28)
+
+  * Fixed #3957: Only animate code annotations when visible (save CPU cycles)
+
+mkdocs-material-8.2.15+insiders-4.16.0 (2022-05-25)
+
+  * Added support for navigation pruning
+  * Fixed search results for non-segmented characters (4.15.2 regression)
+
+mkdocs-material-8.2.15+insiders-4.15.2 (2022-05-22)
+
+  * Removed workaround for abbr on touch devices (superseded by tooltips)
+  * Fixed #3915: Improved Chinese search query segmentation
+  * Fixed #3938: Fixed tooltips position for navigation titles with ellipsis
+
 mkdocs-material-8.2.15+insiders-4.15.1 (2022-05-14)
 
+  * Improved performance of element focus obervables
   * Fixed #3531: Added prev/next buttons to content tabs
   * Fixed tooltip positioning when host element is hidden
-  * Improved performance of element focus obervables
 
 mkdocs-material-8.2.15 (2022-05-14)
 

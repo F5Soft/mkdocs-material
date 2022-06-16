@@ -6,11 +6,58 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.18.1 <small>_ June 14, 2022</small> { id="4.18.1" }
+
+- Fixed #3990: Chinese search highlighting not working on non-boundaries
+
+### 4.18.0 <small>_ June 11, 2022</small> { id="4.18.0" }
+
+- Added support for automatic dark/light mode
+- Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
+### 4.17.2 <small>_ June 5, 2022</small> { id="4.17.2" }
+
+- Added support for custom jieba dictionaries (Chinese search)
+
+### 4.17.1 <small>_ June 5, 2022</small> { id="4.17.1" }
+
+- Added support for cookie consent reject button
+- Added support for cookie consent custom button ordering
+- Fixed #3988: Content tab not focused after alternating anchor links
+
+### 4.17.0 <small>_ June 4, 2022</small> { id="4.17.0" }
+
+- Added support for content tabs anchor links (deep linking)
+- Fixed #3975: Detect composition events in search interface (Chinese)
+- Fixed #3980: Search plugin doesn't use title set via front matter
+
+### 4.16.2 <small>_ May 29, 2022</small> { id="4.16.2" }
+
+- Fixed #3961: Nested sections triggered build error for navigation tabs
+
+### 4.16.1 <small>_ May 28, 2022</small> { id="4.16.1" }
+
+- Switched feedback widget rating titles to tooltips
+- Improved contrast of link colors for light/dark color schemes
+- Fixed #3950: Sticky navigation tabs rendering broken (4.15.2 regression)
+- Fixed #3958: Links invisible when using `white` primary color
+
+### 4.16.0 <small>_ May 25, 2022</small> { id="4.16.0" }
+
+- Added support for navigation pruning
+- Fixed search results for non-segmented characters (4.15.2 regression)
+
+### 4.15.2 <small>_ May 22, 2022</small> { id="4.15.2" }
+
+- Removed workaround for `abbr` on touch devices (superseded by tooltips)
+- Fixed #3915: Improved Chinese search query segmentation
+- Fixed #3938: Fixed tooltips position for navigation titles with ellipsis
+
 ### 4.15.1 <small>_ May 14, 2022</small> { id="4.15.1" }
 
+- Improved performance of element focus obervables
 - Fixed #3531: Added prev/next buttons to content tabs
 - Fixed tooltip positioning when host element is hidden
-- Improved performance of element focus obervables
 
 ### 4.15.0 <small>_ May 8, 2022</small> { id="4.15.0" }
 

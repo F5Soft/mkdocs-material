@@ -135,6 +135,8 @@ You can cancel your sponsorship anytime.[^5]
 [![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the Volkswagen Group" }
 [![RStudio]](https://solutions.rstudio.com){ target=_blank title="RStudio" }
 [![n8n]](https://n8n.io){ target=_blank title="n8n" }
+[![Dogado]](https://www.dogado.de){ target=_blank title="Dogado" }
+[![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
 
 </div>
 
@@ -150,6 +152,8 @@ You can cancel your sponsorship anytime.[^5]
   [Elli]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png
   [RStudio]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png
   [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
+  [Dogado]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png
+  [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
 
 <hr />
 
@@ -174,15 +178,19 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Tooltips] :material-alert-decagram:{ title="Added on May 8, 2022" }
-- [x] [Chinese search support] :material-alert-decagram:{ title="Added on May 5, 2022" }
-- [x] [Tag icons] :material-alert-decagram:{ title="Added on April 24, 2022" }
+- [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
+- [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
+- [x] [Navigation pruning] :material-alert-decagram:{ .mdx-pulse title="Added on May 25, 2022" }
+- [x] [Tooltips]
+- [x] [Chinese search support]
+- [x] [Tag icons]
 - [x] [Card grids]
 - [x] [Offline plugin]
 - [x] [Privacy plugin]
 - [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
+- [x] Sidebars automatically scroll to active item
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
 - [x] [Dismissable announcement bar]
@@ -194,9 +202,6 @@ which are currently exclusively available to sponsors:
 - [x] [Excluding content from search]
 - [x] [Social cards]
 - [x] [Cookie consent]
-- [x] [Linking content tabs]
-- [x] [Boosting pages in search]
-- [x] [Custom admonition icons]
 
 </div>
 
@@ -209,16 +214,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
-
-#### $ 6,000 – Trinidad Scorpion
-
-- [x] [Boosting pages in search]
-- [x] [Custom admonition icons]
-- [x] [Linking content tabs]
-
-  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
-  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
-  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 7,000 – Royal Gold
 
@@ -266,25 +261,35 @@ are released for general availability.
 - [x] [Annotations]
 - [x] [Chinese search support]
 - [x] [Navigation icons]
+- [x] [Navigation pruning]
 - [ ] Navigation status badges
-- [ ] Navigation pruning
-- [ ] Blog
+- [ ] Blog plugin
 
   [Annotations]: ../reference/annotations.md
   [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
+  [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
 
 #### $ 14,000 – Goat's Horn
 
 - [x] [Privacy plugin]
 - [x] [Card grids]
 - [x] [Tooltips]
-- [ ] [Instant previews]
-- [ ] and much more, to be announced ...
+- [x] [Content tabs: anchor links]
+- [x] [Automatic light / dark mode]
+- [ ] Document authors/contributors
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
   [Tooltips]: ../reference/tooltips.md
+  [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
+  [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
+
+#### $ 16,000 – Chipotle
+
+- [ ] [Instant previews]
+- [ ] ... more to be announced
+
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed
@@ -292,6 +297,16 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 6,000 – Trinidad Scorpion
+
+- [x] [Boosting pages in search]
+- [x] [Custom admonition icons]
+- [x] [Linking content tabs]
+
+  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
+  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
+  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 5,000 – Aji Panca
 

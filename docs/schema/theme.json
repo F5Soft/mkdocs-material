@@ -387,7 +387,7 @@
       "pattern": "\\.(ico|png|svg|jpe?g)$",
       "defaultSnippets": [
         {
-          "body": "${1}.png"
+          "body": "${1:path/to/file}.png"
         }
       ]
     },
@@ -397,7 +397,7 @@
       "pattern": "\\.(png|svg|jpe?g)$",
       "defaultSnippets": [
         {
-          "body": "${1}.png"
+          "body": "${1:path/to/file}.png"
         }
       ]
     },
@@ -590,6 +590,13 @@
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading",
             "enum": [
               "navigation.instant"
+            ]
+          },
+          {
+            "title": "Navigation pruning",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning",
+            "enum": [
+              "navigation.prune"
             ]
           },
           {
